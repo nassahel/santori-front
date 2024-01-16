@@ -1,0 +1,9 @@
+:root {
+    --negro: #21201E;
+    --naranja: #efac1f;
+    --blanco: #ffffff;
+}
+
+.classnav {
+    background-color: #21201E;
+}

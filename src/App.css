@@ -1,0 +1,25 @@
+* {
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --negro: #21201E;
+    --naranja: #efac1f;
+    --blanco: #ffffff;
+}
+
+.principal {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+background-image: url('./assets/img/imagen-fond.jpg');
+background-size: cover;
+background-attachment: fixed;
+background-position: center;
+}
+ 
+.footer {
+    margin-top: auto;
+}
