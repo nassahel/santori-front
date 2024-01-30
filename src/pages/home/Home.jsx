@@ -16,7 +16,7 @@ function Home() {
   const productsStore = async () => {
     try {
       setLoading(true);
-      const data = await fetch('https://backend-rolling53i.onrender.com/api/menu');
+      const data = await fetch('https://santori-back.onrender.com/api/menu');
       
       if (!data.ok) {
         throw new Error('No se pudo obtener los datos del servidor');

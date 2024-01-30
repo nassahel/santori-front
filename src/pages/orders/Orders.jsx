@@ -28,7 +28,7 @@ const Orders = () => {
         totalCost: costoTotal
       };
 
-      const url = `https://backend-rolling53i.onrender.com/api/pedidos`;
+      const url = `https://santori-back.onrender.com/api/pedidos`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {

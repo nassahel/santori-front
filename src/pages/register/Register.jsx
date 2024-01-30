@@ -27,7 +27,7 @@ function Register() {
     setError(false);
 
     try {
-      const response = await fetch('https://backend-rolling53i.onrender.com/api/usuarios', {
+      const response = await fetch('https://santori-back.onrender.com/api/usuarios', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

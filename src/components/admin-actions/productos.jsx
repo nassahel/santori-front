@@ -18,7 +18,7 @@ function Productos() {
 
   const productsStore = async () => {
 
-    const data = await fetch('https://backend-rolling53i.onrender.com/api/menu');
+    const data = await fetch('https://santori-back.onrender.com/api/menu');
     const prom = await data.json();
     setProductos(prom.menues);
 
@@ -40,7 +40,7 @@ function Productos() {
         active
       };
 
-      const url = 'https://backend-rolling53i.onrender.com/api/menu';
+      const url = 'https://santori-back.onrender.com/api/menu';
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -94,7 +94,7 @@ function Productos() {
 
       const editIdProduct = idProducto;
 
-      const url = `https://backend-rolling53i.onrender.com/api/menu/${editIdProduct}`; // Incluir el ID en la URL
+      const url = `https://santori-back.onrender.com/api/menu/${editIdProduct}`; // Incluir el ID en la URL
       const response = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -134,7 +134,7 @@ function Productos() {
   //ELIMINAR LOS PRODUCTOS DEL BACKEND
   const eliminarProducto = async (id) => {
     try {
-      const url = `https://backend-rolling53i.onrender.com/api/menu`;
+      const url = `https://santori-back.onrender.com/api/menu`;
       const resp = await fetch(url + "/" + id, {
         method: "DELETE",
         headers: {
@@ -232,7 +232,7 @@ function Productos() {
               name="imagen"
               id="imagen"
               placeholder="Imagen"
-              maxLength={100}
+              maxLength={200}
               value={image}
               onChange={(e) => setImage(e.target.value)}
             />

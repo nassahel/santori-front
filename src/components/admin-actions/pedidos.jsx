@@ -13,7 +13,7 @@ const Pedidos = () => {
   const pedidosGet = async () => {
 
     try {
-      const url = 'https://backend-rolling53i.onrender.com/api/pedidos';
+      const url = 'https://santori-back.onrender.com/api/pedidos';
       const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -53,7 +53,7 @@ const Pedidos = () => {
       };
 
 
-      const url = `https://backend-rolling53i.onrender.com/api/pedidos/${idPedidos._id}`; // Incluir el ID en la URL
+      const url = `https://santori-back.onrender.com/api/pedidos/${idPedidos._id}`; // Incluir el ID en la URL
       const response = await fetch(url, {
         method: 'PUT',
         headers: {

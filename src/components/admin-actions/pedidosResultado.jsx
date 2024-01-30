@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2'
-
 const PedidosResultado = ({ pedidos, modificarPedidos }) => {
 
 

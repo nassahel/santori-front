@@ -18,7 +18,7 @@ function Usuarios() {
 
   const obtenerUsuarios = async () => {
 
-    const data = await fetch('https://backend-rolling53i.onrender.com/api/usuarios');
+    const data = await fetch('https://santori-back.onrender.com/api/usuarios');
     const prom = await data.json();
     setUsuarios(prom.usuarios);
 
@@ -40,7 +40,7 @@ function Usuarios() {
         rol,
         estado
       }
-      const response = await fetch('https://backend-rolling53i.onrender.com/api/usuarios', {
+      const response = await fetch('https://santori-back.onrender.com/api/usuarios', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ function Usuarios() {
 
       const editIdUsuario = idUsuario;
 
-      const response = await fetch(`https://backend-rolling53i.onrender.com/api/usuarios/${editIdUsuario}`, {
+      const response = await fetch(`https://santori-back.onrender.com/api/usuarios/${editIdUsuario}`, {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json',
@@ -129,7 +129,7 @@ function Usuarios() {
 
   const eliminarUsuario = async (id) => {
     try {
-      const resp = await fetch(`https://backend-rolling53i.onrender.com/api/usuarios/${id}`, {
+      const resp = await fetch(`https://santori-back.onrender.com/api/usuarios/${id}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",

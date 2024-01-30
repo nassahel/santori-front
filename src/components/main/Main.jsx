@@ -10,11 +10,11 @@ function Main({ products, searchTerm, loading }) {
     const filteredProducts = products.filter((product) =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
-    const catEntrees = filteredProducts.filter((comi) => comi.category == 'Entradas')
-    const catPizzas = filteredProducts.filter((comi) => comi.category == 'Pizzas')
-    const catMeat = filteredProducts.filter((comi) => comi.category == 'Carnes')
-    const catDrink = filteredProducts.filter((comi) => comi.category == 'Bebidas')
-    const catPasta = filteredProducts.filter((comi) => comi.category == 'Pastas')
+    const catEntrees = filteredProducts.filter((comi) => comi.category == 'entradas')
+    const catPizzas = filteredProducts.filter((comi) => comi.category == 'pizzas')
+    const catMeat = filteredProducts.filter((comi) => comi.category == 'carnes')
+    const catDrink = filteredProducts.filter((comi) => comi.category == 'bebidas')
+    const catPasta = filteredProducts.filter((comi) => comi.category == 'pastas')
 
     return (
         <div className='container-fluid pb-4'>

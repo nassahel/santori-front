@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2'
-
 const UsuariosResultado = ({ usuarios, editarUsuario, eliminarUsuario }) => {
 
   const handleEliminar = (id) => {

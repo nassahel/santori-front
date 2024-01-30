@@ -6,7 +6,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logoResto from '../../assets/img/hnb.png'
+import logoResto from '/assets/img/hnb.png'
 import "./navbar.css";
 import { CartContext } from '../cart-context/CartContext';
 import Swal from 'sweetalert2'
@@ -32,7 +32,7 @@ function Navbarr({ auth, userAdmin }) {
       const tokenUserId = tokenData.uid;
 
 
-      const apiUrl = 'https://backend-rolling53i.onrender.com/api/usuarios';
+      const apiUrl = 'https://santori-back.onrender.com/api/usuarios';
 
       const usuariosGet = async () => {
         try {

@@ -1,9 +1,9 @@
 import React from 'react'
 import "./footer.css"
 import { Link } from 'react-router-dom'
-import ws from '../../assets/img/logo-ws.png'
-import ig from '../../assets/img/logo-ig.png'
-import fb from '../../assets/img/logo-fb.png'
+import ws from '/assets/img/logo-ws.png'
+import ig from '/assets/img/logo-ig.png'
+import fb from '/assets/img/logo-fb.png'
 
 function Footer() {
   return (

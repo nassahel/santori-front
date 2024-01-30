@@ -1,5 +1,5 @@
 import React from 'react'
-import logoResto from '../../assets/img/hnb.png'
+import logoResto from '/assets/img/hnb.png'
 
 function AboutUs() {
   return (

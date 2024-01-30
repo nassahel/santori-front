@@ -1,5 +1,5 @@
 import React from 'react'
-import sadEgg from '../../assets/img/sadd-egg2.png';
+import sadEgg from '/assets/img/sadd-egg2.png';
 import { Link } from 'react-router-dom';
 
 
