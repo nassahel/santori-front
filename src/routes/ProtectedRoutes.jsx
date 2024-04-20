@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Admin from '../pages/admin-actions/Admin'
+import Admin from '../pages/Admin'
 
 export default function ProtectedRouteWrapper({ auth, userAdmin }) {
   if (!auth) {
