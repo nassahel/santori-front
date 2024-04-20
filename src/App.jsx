@@ -1,38 +1,26 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import Footer from './components/footer/Footer'
-import Navbarr from './components/navbar/Navbarr'
-import Home from './pages/home/Home'
-import AboutUs from './pages/about-us/AboutUs'
-import Register from './pages/register/Register'
-import Login from './pages/login/Login'
-import Orders from './pages/orders/Orders'
-import ProtectedRoutes from './routes/ProtectedRoutes';
-import { CartProvider } from './components/cart-context/CartContext'
-import NotFound from './components/not-found/NotFound'
+import Home from './pages/Home'
+import AboutUs from './pages/AboutUs'
+import User from './pages/User'
+import Orders from './pages/Orders'
+import { CartProvider } from './components/CartContext'
+import NotFound from './pages/NotFound'
+import Layout from './routes/Layout'
+import ProtectedRoutes from './routes/ProtectedRoutes'
 
 function App() {
-  const [auth, setAuth] = useState(false);
-
-  const userAdmin = () => {
-    setAuth(true);
-  };
+ 
 
   return (
-    <div className='principal'>
+    <div className='principal flex flex-col min-h-screen bg-neutral-100'>
       <CartProvider>
-        <Navbarr auth={auth} userAdmin={userAdmin} />
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/orders' element={<Orders />} />
-          <Route path='/about' element={<AboutUs />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/admin/*' element={<ProtectedRoutes auth={auth} userAdmin={userAdmin} />} />
-          <Route path='/*' element={<NotFound />} />
+          <Route path='/user/*' element={<User />} />
+          <Route path='/*' element={<Layout />} /> 
+          <Route path='*' element={<NotFound />} />
         </Routes>
-        <Footer className='footer' />
       </CartProvider>
     </div>
   );

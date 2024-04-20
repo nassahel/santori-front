@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
-import { CartContext } from "../../components/cart-context/CartContext";
+import { CartContext } from "../components/CartContext";
 import Swal from 'sweetalert2'
 
 const Orders = () => {
