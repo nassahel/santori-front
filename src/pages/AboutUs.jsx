@@ -26,11 +26,11 @@ function AboutUs() {
     },
   ];
   return (
-    <div className=' w-full lg:text-center py-20 lg:py-10 flex flex-col  px-4 items-center bg-[url(/assets/img/bg1.png)]'>
-      <div className='h-28 bg-red-500  px-20 rounded-3xl'>
-        <img src={LogoTransparente} alt="" className='h-full' />
+    <div className=' w-full lg:text-center py-20 lg:py-10 flex flex-col h-[4ren]  px-4 items-center bg-[url(/assets/img/bg1.png)]'>
+      <div className='h-28 bg-orange-700  w-full max-w-[25rem] rounded-3xl'>
+        <img src={LogoTransparente} alt="" className='h-full  mx-auto' />
       </div>
-      <div className='flex flex-col items-center lg:w-3/5 text-lg mt-10'>
+      <div className='flex flex-col items-center  lg:w-3/5 text-lg mt-10'>
         {
           content.map((cont, i) => (
             <div >

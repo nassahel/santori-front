@@ -41,7 +41,7 @@ const Categories = () => {
   ]
 
   return (
-    <section className=' my-20 lg:my-12 xl:w-3/4 mx-auto'>
+    <section className=' my-4 lg:my-12 xl:w-3/4 mx-auto'>
       <h2 className='font-semibold font-sans text-2xl mb-8 pb-2 border-b-2 border-orange-400'>Buscá por categorías...</h2>
       <div className='flex gap-2 items-center justify-center mt-6 2xl:w-10/12 mx-auto'>
         {
