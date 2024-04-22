@@ -17,7 +17,7 @@ function User() {
         </Link>
 
       </nav>
-      <div className='flex overflow-hidden '>
+      <div className='flex w-full h-full items-center justify-center overflow-hidden '>
         <div className='hidden lg:block lg:w-1/2 overflow-hidden'>
           <img src={bg} alt="" className=' object-cover' />
         </div>

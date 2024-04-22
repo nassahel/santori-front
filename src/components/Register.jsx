@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 function Register() {
-
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
   const [direc, setDirec] = useState("");
@@ -45,12 +44,8 @@ function Register() {
         })
       }
 
-
-
       limpiarFormulario();
       window.location.href = ('/login');
-
-
 
     } catch (error) {
       console.error('Error en la solicitud:', error);
@@ -67,32 +62,32 @@ function Register() {
   };
 
   return (
-    <div className='w-10/12 lg:w-1/2 flex flex-col items-center justify-center'>
+    <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
       <div className=' w-10/12 max-w-[26rem]'>
         <form id="miFormulario" onSubmit={handleRegister} className='bg-white rounded-md shadow-sm py-8 mb-2 px-4 flex flex-col gap-4 '>
           <div className=''>
             <h3 className='text-center font-semibold text-xl'>Registra tu cuenta</h3>
           </div>
           <div className='flex flex-col border-b  '>
-            <label className='font-semibold mb-1' >Nombre:</label>
-            <input className='focus:outline-none' required aria-describedby="name" maxLength='50' type="text" onChange={(e) => setNombre(e.target.value)} />
+            <label className='font-semibold mb-1' >Nombre y apellido:</label>
+            <input className='focus:outline-none text-neutral-600' required aria-describedby="name" maxLength='50' type="text" onChange={(e) => setNombre(e.target.value)} />
           </div>
           <div className='flex flex-col border-b'>
             <label className='font-semibold mb-1' >Correo:</label>
-            <input className='focus:outline-none' required type="email" maxLength='50' aria-describedby="correo" onChange={(e) => setCorreo(e.target.value)} />
+            <input className='focus:outline-none text-neutral-600' required type="email" maxLength='50' aria-describedby="correo" onChange={(e) => setCorreo(e.target.value)} />
           </div>
           <div className='flex flex-col border-b'>
             <label className='font-semibold mb-1' >Dirección:</label>
-            <input className='focus:outline-none' required type="text" maxLength='50' aria-describedby="direc" onChange={(e) => setDirec(e.target.value)} />
+            <input className='focus:outline-none text-neutral-600' required type="text" maxLength='50' aria-describedby="direc" onChange={(e) => setDirec(e.target.value)} />
           </div>
           <div className='flex flex-col border-b'>
             <label className='font-semibold mb-1' >Contraseña:</label>
-            <input className='focus:outline-none' required maxLength='20' type="password" aria-describedby="passwordHelpBlock" onChange={(e) => setPassword(e.target.value)} />
+            <input className='focus:outline-none text-neutral-600' required maxLength='20' type="password" aria-describedby="passwordHelpBlock" onChange={(e) => setPassword(e.target.value)} />
           </div>
           <div>
             <div className='flex flex-col border-b'>
               <label className='font-semibold mb-1' >Repetir contraseña:</label>
-              <input className='focus:outline-none' required maxLength='20' type="password" aria-describedby="confirmPasswordHelpBlock" onChange={(e) => setConfirmPassword(e.target.value)} />
+              <input className='focus:outline-none text-neutral-600' required maxLength='20' type="password" aria-describedby="confirmPasswordHelpBlock" onChange={(e) => setConfirmPassword(e.target.value)} />
             </div>
             <p className='text-info' id="confirmPasswordHelpBlock">*Por favor, repita la misma contraseña.</p>
           </div>

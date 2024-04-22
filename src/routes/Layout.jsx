@@ -6,6 +6,7 @@ import Home from '../pages/Home'
 import Orders from '../pages/Orders'
 import AboutUs from '../pages/AboutUs'
 import ProtectedRoutes from './ProtectedRoutes';
+import NavMovil from '../components/NavMovil'
 
 
 const Layout = () => {
@@ -18,6 +19,7 @@ const Layout = () => {
     return (
         <div>
             <Navbar />
+            <NavMovil/>
             <Routes>
                 <Route path='/:category?/' element={<Home />} />
                 <Route path='/orders' element={<Orders />} />

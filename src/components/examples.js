@@ -371,3 +371,78 @@
     "active": true
   }
 ]
+
+
+
+
+[
+  {
+    "name": "Hamburguesa clásica",
+    "detail": "Deliciosa hamburguesa con carne de res, lechuga, tomate, cebolla y salsa especial.",
+    "price": 150,
+    "category": "sandwichs",
+    "image": "https://pronacatqma.com/images/com_yoorecipe/banner_superior/15685_1.jpg",
+    "active": true
+  },
+  {
+    "name": "Hamburguesa vegetariana",
+    "detail": "Hamburguesa vegetariana con una sabrosa hamburguesa de garbanzos, lechuga, tomate, cebolla y mayonesa vegana.",
+    "price": 180,
+    "category": "sandwichs",
+    "image": "https://cdn2.cocinadelirante.com/sites/default/files/images/2018/07/receta-de-hamburguesa-vegetariana-de-quinoa-y-frijoles.jpg",
+    "active": true
+  },
+  {
+    "name": "Hamburguesa BBQ",
+    "detail": "Hamburguesa con carne de res, bacon, cebolla caramelizada, queso cheddar y salsa BBQ.",
+    "price": 200,
+    "category": "sandwichs",
+    "image": "https://ik.imagekit.io/smithfield/farmerjohn/3b1720e5-a9aa-0088-f165-1043ab81f774/4a8e8be6-5c83-4042-b1bd-50bb8ad3567a/Bacon-BBQ-Burger_B_Web_400x250.jpg",
+    "active": true
+  },
+  {
+    "name": "Hamburguesa picante",
+    "detail": "Hamburguesa con carne de res, jalapeños, queso pepper jack, cebolla morada y salsa picante.",
+    "price": 180,
+    "category": "sandwichs",
+    "image": "https://img.freepik.com/fotos-premium/hamburguesa-picante_777078-577.jpg",
+    "active": true
+  },
+  {
+    "name": "Hamburguesa doble queso",
+    "detail": "Doble carne de res, doble queso cheddar, lechuga, tomate y salsa especial.",
+    "price": 220,
+    "category": "sandwichs",
+    "image": "https://assets.delirec.com/images%2FEswYuYzfJ0XUtaodcRHKBqjt5cn1%2Frecipe%2F6bc1d41a-c96f-4f18-9270-2b10c21b25aa-Duplo-cheese-bacon-(segredos-para-fazer-um-bom-hamb%C3%BArguer)--gallery-0",
+    "active": true
+  }
+]
+
+
+[
+  {
+    "name": "Choripán",
+    "detail": "Clásico sándwich argentino que consiste en un chorizo a la parrilla servido en un pan tipo baguette con chimichurri.",
+    "price": 120,
+    "category": "sandwichs",
+    "image": "https://cdn.kiwilimon.com/brightcove/6919/6919.jpg",
+    "active": true
+  },
+    {
+    "name": "Bondiola",
+    "detail": "Sándwich de bondiola de cerdo a la parrilla, marinada en una salsa especial, servido en un pan tipo baguette con chimichurri.",
+    "price": 160,
+    "category": "sandwichs",
+    "image": "https://www.recetasnatura.com.ar/sites/default/files/sandwich-de-bondiola-caramelizada-c.jpg",
+    "active": true
+  },
+  {
+    "name": "Matambre a la pizza",
+    "detail": "Sándwich de matambre de ternera cubierto con salsa de tomate, mozzarella y otros ingredientes de una pizza, servido en un pan tipo baguette.",
+    "price": 220,
+    "category": "sandwichs",
+    "image": "https://sangiorgioar.com/sites/default/files/sanwich_matambrito_00182.jpg",
+    "active": true
+  }
+]
+
