@@ -1,28 +1,28 @@
 import React from 'react'
 import { TiShoppingCart } from "react-icons/ti";
-import { BiSolidUserCircle, BiSearchAlt2 } from "react-icons/bi";
+import { BiSolidUserCircle } from "react-icons/bi";
 import { Link } from 'react-router-dom';
 import LogoTransparente from "/assets/img/logo-transparente.png"
+import Searcher from './Searcher';
 
 const Navbar = () => {
   return (
-    <div className='h-[4rem] hidden shadow-md text-white bg-orange-500 lg:flex sticky top-0 z-30 items-center justify-between px-4'>
-      <Link to="/" className='font-bold text-2xl w-1/3'>
+    <div className='h-[4rem] hidden shadow-md text-white gap-2 bg-orange-500 lg:flex sticky top-0 z-30 items-center justify-between pl-4 pr-3'>
+      <Link to="/" className='font-bold text-2xl xl:w-1/5'>
         <img src={LogoTransparente} alt="" className='h-16' />
       </Link>
-      <div className='flex justify-center w-1/3 '>
-        <div className='bg-white w-full rounded flex text-black justify-between overflow-hidden pl-3 pr-2 items-center'>
-          <input type="search" name="" id="" placeholder='Buscá una comida...' className='hover:outline-none w-full h-12 py-1 focus:outline-none ' />
-          <BiSearchAlt2 color='orange' size="29" className='cursor-pointer' />
-        </div>
-
+      <div className='flex justify-center flex-grow max-w-[60rem] '>
+        <Searcher type='1' />
       </div>
-      <div className='flex w-1/3 gap-4 font-semibold text-lg items-center justify-end'>
+      <div className='flex  gap-3 font-semibold items-center justify-end'>
         <Link className='border-b-2 border-transparent hover:border-white duration-300' to="/">Inicio</Link>
         <Link className='border-b-2 border-transparent hover:border-white duration-300' to="about">Nosotros</Link>
         <Link className='border-b-2 border-transparent hover:border-white duration-300' to="/admin/*">Administración</Link>
-        <Link to="/user/login"><BiSolidUserCircle size='40' /></Link>
-        <Link to="/orders"><TiShoppingCart size='40' /></Link>
+        <Link to="/user/login" className='flex items-center gap-2 border px-2 py-1 rounded-md hover:bg-orange-400 duration-300'>
+          <BiSolidUserCircle size='25' />
+          <p>Ingresar</p>
+        </Link>
+        <Link to="/orders" className='border-l border-l-neutral-300 pl-2 py-1 duration-300'><TiShoppingCart size='25' /></Link>
 
 
       </div>
