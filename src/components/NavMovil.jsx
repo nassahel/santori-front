@@ -15,7 +15,7 @@ const NavMovil = () => {
       </div>
       <div className={`${sideBar ? "w-full" : "w-0"} duration-200 fixed top-0 bottom-0 left-0 right-0 bg-neutral-100  overflow-hidden h-screen`}>
         <button onClick={() => setSidebar(false)} className='block ml-auto mr-2 mt-2'><AiOutlineClose className="h-8 w-8 text-black" /></button>
-        <Link onClick={() => setSidebar(false)} to='#' className='nav-btn'>Home</Link>
+        <Link onClick={() => setSidebar(false)} to='/' className='nav-btn'>Home</Link>
         <Link onClick={() => setSidebar(false)} to='about' className='nav-btn'>Nosotros</Link>
         <Link onClick={() => setSidebar(false)} to='user/login' className='nav-btn'>Iniciar Sesión</Link>
       </div>

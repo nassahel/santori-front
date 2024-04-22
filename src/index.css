@@ -4,9 +4,19 @@
 
 body {
     position: relative;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer */
+    user-select: none;
+    /* Chrome y otros navegadores modernos */
 }
 
 
 .nav-btn {
-    @apply flex font-medium text-3xl lg:text-xl items-center justify-center text-black w-full lg:w-auto p-4 h-14 lg:h-full text-center active:bg-amber-500/[.2] 
- }
+    @apply flex font-medium text-3xl lg:text-xl items-center justify-center text-black w-full lg:w-auto p-4 h-14 lg:h-full text-center active:bg-amber-500/[.2]
+}
