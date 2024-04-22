@@ -5,7 +5,7 @@ import { LiaFacebook } from "react-icons/lia";
 
 function Footer() {
   return (
-    <div className="bg-orange-500 flex px-4 py-4 h-[15vh] text-white items-end justify-between text-sm mt-auto" >
+    <div className="bg-orange-500 flex px-4 py-4 min-h-[15vh] text-white items-end justify-between text-sm mt-auto" >
       <div className="w-1/3 flex flex-col">
         <div className="flex items-center gap-2">
           <Link to='notFound' className=''><BsWhatsapp size="25" /> </Link>

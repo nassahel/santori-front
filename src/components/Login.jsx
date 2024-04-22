@@ -49,7 +49,7 @@ const Login = () => {
   }
 
   return (
-    <div className='w-10/12 lg:w-1/2 flex flex-col items-center justify-center'>
+    <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
       <div className=' w-10/12 max-w-[26rem]'>
         <form id="miFormulario" onSubmit={botonIniciar} className='bg-white rounded-md shadow-sm py-12 mb-2 px-4 flex flex-col gap-4 '>
           <div className=''>
@@ -57,11 +57,11 @@ const Login = () => {
           </div>
           <div className='flex flex-col border-b  '>
             <label className='font-semibold mb-1' >Correo:</label>
-            <input required maxLength='50' type='email' className='focus:outline-none' aria-describedby='email'  onChange={(e) => setCorreo(e.target.value)} />
+            <input required maxLength='50' type='email' className='focus:outline-none text-neutral-600' aria-describedby='email'  onChange={(e) => setCorreo(e.target.value)} />
           </div>
           <div className='flex flex-col border-b'>
             <label className='font-semibold mb-1'>Contraseña:</label>
-            <input required maxLength='20' type="password" aria-describedby='password' className='focus:outline-none' onChange={(e) => setPassword(e.target.value)} />
+            <input required maxLength='20' type="password" aria-describedby='password' className='focus:outline-none text-neutral-600' onChange={(e) => setPassword(e.target.value)} />
           </div>
           <div className='mb-3 d-flex justify-content-center'>
             <button className='bg-orange-400 text-white py-1 px-4 rounded-full' type='submit' >Iniciar Sesión</button>

@@ -1,12 +1,8 @@
 import React from 'react'
-import logoResto from '/assets/img/hnb.png'
+import LogoTransparente from "/assets/img/logo-transparente.png"
+
 
 function AboutUs() {
-
-
-
-
-
   const content = [
     {
       title: "Sobre Nosotros",
@@ -30,21 +26,23 @@ function AboutUs() {
     },
   ];
   return (
-    <div className=' w-full text-center py-10 flex flex-col items-center bg-[url(/assets/img/bg1.png)]'>
-      <h2 className='text-4xl font-semibold'>Santori Delivery</h2>
-      <div className='flex flex-col items-center w-3/5 text-lg mt-10'>
+    <div className=' w-full lg:text-center py-20 lg:py-10 flex flex-col  px-4 items-center bg-[url(/assets/img/bg1.png)]'>
+      <div className='h-28 bg-red-500  px-20 rounded-3xl'>
+        <img src={LogoTransparente} alt="" className='h-full' />
+      </div>
+      <div className='flex flex-col items-center lg:w-3/5 text-lg mt-10'>
         {
           content.map((cont, i) => (
             <div >
-              <h2 className='text-orange-500 font-semibold mb-3 text-2xl'>{cont.title}</h2>
-              <p className='font-medium'>{cont.content}</p>
+              <h2 className='text-red-600 font-semibold mb-3 text-2xl'>{cont.title}</h2>
+              <p className='font-medium text-justify lg:text-center'>{cont.content}</p>
               <hr className='m-8 w-50 mx-auto' />
             </div>
           ))
         }
       </div>
-      <p className=' font-medium text-xl w-75'>Gracias por elegirnos. Esperamos verte pronto en Santorini Restaurant.</p>
-      <p className=' font-semibold text-xl mt-4 text-orange-500'>¡Buen provecho!</p>
+      <p className=' font-medium text-xl text-center w-75'>Gracias por elegirnos. Esperamos verte pronto en Santorini Restaurant.</p>
+      <p className=' font-semibold text-3xl mt-4 text-red-600'>¡Buen provecho!</p>
     </div>
   )
 }
