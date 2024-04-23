@@ -56,7 +56,7 @@ const Home = () => {
 
       <Categories />
       {loading && <CardSkeleton />}
-      <div className='flex flex-wrap xl:w-3/4 mx-auto mt-10'>
+      <div className='flex flex-wrap xl:w-3/4 mx-auto lg:mt-10'>
         {
           (products.map((product, i) => (
             <CardComidas action={() => openCloseModal(product)} key={i} product={product} />
