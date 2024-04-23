@@ -14,13 +14,13 @@ const Layout = () => {
 
     const [auth, setAuth] = useState(false);
     const userAdmin = () => {
-      setAuth(true);
+        setAuth(true);
     };
 
     return (
-        <div>
+        <div className='min-h-screen flex flex-col'>
             <Navbar />
-            <NavMovil/>
+            <NavMovil />
             <Searcher />
             <Routes>
                 <Route path='/:category?/' element={<Home />} />
@@ -28,7 +28,7 @@ const Layout = () => {
                 <Route path='/about' element={<AboutUs />} />
                 <Route path='/admin/*' element={<ProtectedRoutes auth={auth} userAdmin={userAdmin} />} />
             </Routes>
-            <Footer className='footer' />
+            <Footer />
         </div>
     )
 }
