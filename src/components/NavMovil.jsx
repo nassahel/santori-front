@@ -5,7 +5,6 @@ import LogoTransparente from "/assets/img/logo-transparente.png"
 import { Link } from "react-router-dom";
 import CartIcon from "./CartIcon";
 
-
 const NavMovil = () => {
   const [sideBar, setSidebar] = useState(false)
   return (
