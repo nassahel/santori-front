@@ -1,9 +1,9 @@
 import React from 'react'
-import { TiShoppingCart } from "react-icons/ti";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { Link } from 'react-router-dom';
 import LogoTransparente from "/assets/img/logo-transparente.png"
 import Searcher from './Searcher';
+import CartIcon from './CartIcon';
 
 const Navbar = () => {
   return (
@@ -22,8 +22,7 @@ const Navbar = () => {
           <BiSolidUserCircle size='25' />
           <p>Ingresar</p>
         </Link>
-        <Link to="/orders" className='border-l border-l-neutral-300 pl-2 py-1 duration-300'><TiShoppingCart size='25' /></Link>
-
+        <CartIcon />
 
       </div>
     </div>
