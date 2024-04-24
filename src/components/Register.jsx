@@ -87,16 +87,16 @@ function Register() {
             <label className='font-semibold mb-1' >Contraseña:</label>
             <div className='flex justify-between'>
               <input className='focus:outline-none text-neutral-600 w-full' required maxLength='20' type={eyePass ? 'text' : 'password'} aria-describedby="passwordHelpBlock" onChange={(e) => setPassword(e.target.value)} />
-              {!eyePass ? <IoEyeOffOutline onClick={()=> setEyePass(true)} size="20" /> : <IoEyeOutline size="20" onClick={()=> setEyePass(false)} />}
+              {!eyePass ? <IoEyeOffOutline onClick={() => setEyePass(true)} size="20" /> : <IoEyeOutline size="20" onClick={() => setEyePass(false)} />}
             </div>
           </div>
           <div>
             <div className='flex flex-col border-b'>
               <label className='font-semibold mb-1' >Confirmar contraseña:</label>
               <div className='flex justify-between'>
-              <input className='focus:outline-none text-neutral-600' required maxLength='20' type={eyeConf ? 'text' : 'password'} aria-describedby="confirmPasswordHelpBlock" onChange={(e) => setConfirmPassword(e.target.value)} />
-              {!eyeConf ? <IoEyeOffOutline onClick={()=> setEyeConf(true)} size="20" /> : <IoEyeOutline size="20" onClick={()=> setEyeConf(false)} />}
-            </div>
+                <input className='focus:outline-none text-neutral-600' required maxLength='20' type={eyeConf ? 'text' : 'password'} aria-describedby="confirmPasswordHelpBlock" onChange={(e) => setConfirmPassword(e.target.value)} />
+                {!eyeConf ? <IoEyeOffOutline onClick={() => setEyeConf(true)} size="20" /> : <IoEyeOutline size="20" onClick={() => setEyeConf(false)} />}
+              </div>
             </div>
             <p className='text-info' id="confirmPasswordHelpBlock">*Por favor, repita la misma contraseña.</p>
           </div>
@@ -107,7 +107,7 @@ function Register() {
           </div>
 
           <div className=' d-flex justify-content-center'>
-            <button type='submit' className='bg-orange-400 text-white py-1 px-4 rounded-full' >Registrarse</button>
+            <button onClick={() => alert("Ups! 😥 Página en desarrollo. \nEsta funcion estara disponible proximamente!")} type='submit' className='bg-orange-400 text-white py-1 px-4 rounded-full' >Registrarse</button>
           </div>
         </form>
         <div className='text-center'>

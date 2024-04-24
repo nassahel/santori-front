@@ -6,19 +6,31 @@ import { FaPlus, FaMinus } from "react-icons/fa6";
 const Orders = () => {
   const [orden, setOrden] = useState();
   const [envio, setEnvio] = useState(0)
+  const [modal, setModal] = useState(false);
 
+
+
+  const setearOrden = async () => {
+    const pedido = await JSON.parse(localStorage.getItem('pedido'))
+    setOrden(pedido);
+  }
 
   useEffect(() => {
-    const setearOrden = async () => {
-      const pedido = await JSON.parse(localStorage.getItem('pedido'))
-      setOrden(pedido);
-    }
+
     setearOrden()
   }, [])
 
-  console.log(orden);
 
+  const deleteItem = async (id) => {
+    let pedido = await JSON.parse(localStorage.getItem('pedido'))
+    let deletedItem = pedido.productos.filter(prod => prod._id !== id)
+    pedido.productos = deletedItem
+    console.log(pedido);
+    localStorage.setItem('pedido', JSON.stringify(pedido))
+    setearOrden()
+  }
 
+  // console.log(orden);
 
   return (
     <div className='w-full max-w-[80rem] mx-auto lg:flex py-6 '>
@@ -41,7 +53,7 @@ const Orders = () => {
                       <p>{prod.quantity}</p>
                       <FaPlus className='cursor-pointer' />
                     </div>
-                    <button className='font-semibold hover:underline'>Eliminar</button>
+                    <button onClick={() => deleteItem(prod._id)} className='font-semibold hover:underline'>Eliminar</button>
                   </div>
                 </div>
               </div>
@@ -54,7 +66,7 @@ const Orders = () => {
       </div>
 
       <div className='lg:w-1/4 p-2 sticky bottom-0'>
-        <div className='bg-white border rounded-md p-4 flex flex-col gap-2 lg:gap-4'>
+        <div className='bg-white border rounded-md p-2 lg:p-4 flex flex-col gap-2 lg:gap-4'>
           <div className='border-b pb-2 '>
             <h2 className='text-center text-lg font-semibold '>Resumen de compra</h2>
           </div>
@@ -79,7 +91,7 @@ const Orders = () => {
               <p>${orden && orden.total}</p>
             </div>
             <div>
-              <button className='bg-blue-500 w-full py-1 text-white font-semibold rounded-full hover:bg-blue-600 duration-300'>Confirmar compra</button>
+              <button onClick={()=> alert("Ups! 😥 Página en desarrollo. \nEsta funcion estara disponible proximamente!")} className='bg-blue-500 w-full py-1 text-white font-semibold rounded-full hover:bg-blue-600 duration-300'>Confirmar compra</button>
             </div>
           </div>
 

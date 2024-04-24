@@ -1,5 +1,5 @@
 import React from 'react'
-import { BiSolidUserCircle } from "react-icons/bi";
+import { AiOutlineUser } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import LogoTransparente from "/assets/img/logo-transparente.png"
 import Searcher from './Searcher';
@@ -17,9 +17,9 @@ const Navbar = () => {
       <div className='flex  gap-3 font-semibold items-center justify-end'>
         <Link className='border-b-2 border-transparent hover:border-white duration-300' to="/">Inicio</Link>
         <Link className='border-b-2 border-transparent hover:border-white duration-300' to="about">Nosotros</Link>
-        <Link className='border-b-2 border-transparent hover:border-white duration-300' to="/admin/*">Administración</Link>
+        <Link onClick={() => alert("Ups! 😥 Página en desarrollo. \nEsta funcion estara disponible proximamente!")} className='border-b-2 border-transparent hover:border-white duration-300' to="/admin/*">Administración</Link>
         <Link to="/user/login" className='flex items-center gap-2 border px-2 py-1 rounded-md hover:bg-orange-400 duration-300'>
-          <BiSolidUserCircle size='25' />
+          <AiOutlineUser size='20' />
           <p>Ingresar</p>
         </Link>
         <CartIcon />
