@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Resultado from './productoResultado';
 import Swal from 'sweetalert2'
+import ListadoMenus from './ListadoMenus';
 
-function Productos() {
+function Productos({setBtnActive}) {
 
   const [productos, setProductos] = useState([]);
   const [idProducto, setidProduct] = useState()
@@ -26,6 +26,7 @@ function Productos() {
 
   useEffect(() => {
     productsStore();
+    setBtnActive('Menus')
   }, []);
 
 
@@ -187,34 +188,31 @@ function Productos() {
     setActive(false);
   };
 
-  return (
-    <main className='container-fluid col-lg-11'>
-      <form className=" m-auto producto-contenedor bg-white p-2 rounded" onSubmit={handleSubmit}>
-        <div className='row mt-4'>
 
-          <div className='col-lg-4 text-center mt-2'>
-            <label className='col-12 producto-texto fs-6' htmlFor="nombre">Nombre de Producto</label>
-            <input
-              className='input-productos col-4 p-1 input-nombre rounded border border-black border-opacity-50'
-              type="text"
-              name="nombre"
-              id="nombre"
-              placeholder="Nombre"
-              value={name}
-              maxLength={30}
-              onChange={(e) => setName(e.target.value)}
-            />
+  const sectionInput = 'flex flex-col w-1/3 px-4 py-2 justify-center ';
+  const label = 'font-semibold';
+  const input = 'border-b border-black bg-neutral-200 outline-none p-1'
+
+
+  return (
+    <main className='flex flex-col gap-8 '>
+      <form className=" bg-white p-3 rounded-sm flex gap-4" onSubmit={handleSubmit}>
+
+
+        <div className={`flex flex-col w-1/4 grow py-2`}>
+          <label className={label} htmlFor="descripcion">Descripción de Producto</label>
+          <textarea className={`${input} resize-none grow flex`} name="descripcion" id="descripcion" value={detail} maxLength={200} onChange={(e) => setDetail(e.target.value)}></textarea>
+        </div>
+
+        <div className='flex flex-wrap'>
+          <div className={sectionInput}>
+            <label className={label} htmlFor="nombre">Nombre de Producto</label>
+            <input className={input} type="text" name="nombre" id="nombre" value={name} maxLength={30} onChange={(e) => setName(e.target.value)} />
           </div>
 
-          <div className='col-lg-4 text-center mt-2'>
-            <label className='col-12 producto-texto fs-6' htmlFor="precio">Precio del Producto</label>
-            <input
-              className='input-productos col-4 p-1 input-nombre rounded border border-black border-opacity-50'
-              type="number"
-              name="precio"
-              id="precio"
-              placeholder="Precio del Producto"
-              value={price}
+          <div className={sectionInput}>
+            <label className={label} htmlFor="precio">Precio del Producto</label>
+            <input className={input} type="number" name="precio" id="precio" value={price}
               onChange={(e) => {
                 const inputValue = parseFloat(e.target.value);
                 if (!isNaN(inputValue) && inputValue >= 0 && inputValue <= 99999) {
@@ -224,47 +222,24 @@ function Productos() {
             />
           </div>
 
-          <div className='col-lg-4 text-center mt-2'>
-            <label className='col-12 producto-texto fs-6' htmlFor="imagen">Link de Imagen</label>
-            <input
-              className='input-productos col-4 p-1 input-nombre rounded border border-black border-opacity-50'
-              type="text"
-              name="imagen"
-              id="imagen"
-              placeholder="Imagen"
-              maxLength={200}
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-            />
+          <div className={sectionInput}>
+            <label className={label} htmlFor="imagen">Link de Imagen</label>
+            <input className={input} type="text" name="imagen" id="imagen" maxLength={200} value={image} onChange={(e) => setImage(e.target.value)} />
           </div>
 
-        </div>
-        <div className='row mt-lg-4 mt-2'>
-          <div className='col-lg-4 text-center'>
-            <label className='col-12 producto-texto fs-6' htmlFor="activo">Producto Activo</label>
-            <select
-              className='col-lg-4 col-4 input-productos p-1  input-nombre rounded border border-black border-opacity-50'
-              name="activo"
-              id="activo"
-              placeholder="Producto Activo"
-              value={active}
-              onChange={(e) => setActive(e.target.value === 'true')}
-            >
+
+
+          <div className={sectionInput}>
+            <label className={label} htmlFor="activo">Producto Activo</label>
+            <select className={input} name="activo" id="activo" value={active} onChange={(e) => setActive(e.target.value === 'true')}            >
               <option value={"seleccionar"}>Seleccionar</option>
               <option value={true}>Si</option>
               <option value={false}>No</option>
             </select>
           </div>
-          <div className='col-lg-4 mt-2 text-center'>
-            <label className='col-12 producto-texto fs-6' htmlFor="categoria">Categoría del Producto</label>
-            <select
-              className='col-lg-4 col-4 input-productos p-1 input-nombre rounded border border-black border-opacity-50'
-              name="categoria"
-              id="categoria"
-              placeholder="Categoría del Producto"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
+          <div className={sectionInput}>
+            <label className={label} htmlFor="categoria">Categoría del Producto</label>
+            <select className={input} name="categoria" id="categoria" value={category} onChange={(e) => setCategory(e.target.value)}            >
               <option value={"Productos"} >Productos</option>
               <option value={"Pizzas"}>Pizzas</option>
               <option value={"Entradas"}>Entradas</option>
@@ -275,38 +250,20 @@ function Productos() {
           </div>
 
 
-          <div className='col-lg-4 mt-2 text-center'>
-            <label className='col-12 producto-texto fs-6' htmlFor="descripcion">Descripción de Producto</label>
-            <input
-              className='mt-0 input-descripcion col-4 p-1 input-nombre rounded border border-black border-opacity-50'
-              name="descripcion"
-              type='text'
-              id="descripcion"
-              placeholder="Descripción"
-              value={detail}
-              maxLength={50}
-              onChange={(e) => setDetail(e.target.value)}
-            />
+
+
+
+
+          <div className={`${sectionInput} flex items-center justify-end`}>
+            <button className="bg-neutral-900 hover:bg-neutral-700 duration-300 text-white py-1 w-40" type="submit" >{editProduct ? 'Editar Producto' : 'Agregar Producto'}</button>
           </div>
         </div>
 
-        <div className='col-lg-4-md-12'>
-          <div className='mt-2 text-center'>
-            <input
-              className="my-2 mb-3 btn btn-dark"
-              type="submit"
-              value={editProduct ? 'Editar Producto' : 'Agregar Producto'}
-            />
-          </div>
-        </div>
+
       </form>
 
-      <div className="resultado">
-        <Resultado
-          productos={productos}
-          editarProducto={datosEdicion}
-          eliminarProducto={eliminarProducto}
-        />
+      <div className="">
+        <ListadoMenus />
       </div>
     </main>
 

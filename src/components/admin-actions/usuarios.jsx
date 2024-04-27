@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import UsuariosResultado from './usuariosResultado'
 import Swal from 'sweetalert2'
+import ListadoUsuarios from './ListadoUsuarios';
 
-function Usuarios() {
+function Usuarios({setBtnActive}) {
 
   const [usuarios, setUsuarios] = useState([]);
   const [idUsuario, setidUsuario] = useState()
@@ -26,6 +26,7 @@ function Usuarios() {
 
   useEffect(() => {
     obtenerUsuarios();
+    setBtnActive('Usuarios')
   }, []);
 
 
@@ -179,116 +180,55 @@ function Usuarios() {
     setDirec('');
   };
 
+  const sectionInput = 'flex flex-col w-1/3 px-4 py-2 justify-center ';
+  const label = 'font-semibold';
+  const input = 'border-b border-black bg-neutral-200 outline-none p-1'
 
   return (
-    <main className='container-fluid col-lg-11'>
-      <form className=" m-auto producto-contenedor bg-white p-2 rounded" onSubmit={handleSubmit}>
-        <div className='row mt-4'>
-          <div className='col-lg-4 text-center mt-2'>
-            <label className='col-12 producto-texto fs-6' htmlFor="nombre">Nombre Usuario</label>
-            <input
-              className='input-productos col-4 p-1 rounded border border-black border-opacity-50'
-              type="text"
-              name="nombre"
-              id="nombre"
-              placeholder="Nombre"
-              value={nombre}
-              maxLength={15}
-              onChange={(e) => setNombre(e.target.value)}
-            />
-          </div>
-          <div className='col d-flex justify-content-center flex-column align-items-center text-center'>
-            <label className='fs-6' htmlFor="email">Email Usuario</label>
-            <input
-              className='input-productos col-4 p-1 rounded border border-black border-opacity-50'
-              type="text"
-              name="email"
-              id="email"
-              placeholder="Email"
-              value={correo}
-              maxLength={50}
-              onChange={(e) => setCorreo(e.target.value)}
-            />
-          </div>
+    <main className='flex flex-col gap-8 '>
+      <form className="bg-white p-3 rounded-sm flex flex-wrap" onSubmit={handleSubmit}>
 
-
-          <div className='col-lg-4 text-center mt-2'>
-            <label className='col-12 producto-texto fs-6' htmlFor="password">Contraseña Usuario</label>
-            <input
-              className='input-productos col-4 p-1 input-nombre rounded border border-black border-opacity-50'
-              type="text"
-              name="password"
-              id="password"
-              placeholder="Contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+        <div className={sectionInput}>
+          <label className={label} htmlFor="nombre">Nombre Usuario</label>
+          <input className={input} type="text" name="nombre" id="nombre" value={nombre} maxLength={15} onChange={(e) => setNombre(e.target.value)} />
         </div>
-
-        <div className='row mt-lg-4 mt-2'>
-          <div className='col-lg-4 text-center mt-2'>
-            <label className='col-12 producto-texto fs-6' htmlFor="activo">Usuario Activo</label>
-            <select
-              className='col-lg-4 col-4 input-productos p-1 input-nombre rounded border border-black border-opacity-50'
-              name="activo"
-              id="activo"
-              value={estado}
-              onChange={(e) => setEstado(e.target.value)}
-            >
-              <option value={"seleccionar"}>Seleccione el estado</option>
-              <option value={true}>Si</option>
-              <option value={false}>No</option>
-            </select>
-          </div>
-
-          <div className='col-lg-4 text-center mt-2'>
-            <label className='col-12 producto-texto fs-6' htmlFor="direc">Dirección Usuario</label>
-            <input
-              className='input-productos col-4 p-1 input-nombre rounded border border-black border-opacity-50'
-              name="direc"
-              id="direc"
-              placeholder="Dirección"
-              value={direc}
-              onChange={(e) => setDirec(e.target.value)}
-            />
-          </div>
-
-          <div className='col-lg-4 text-center mt-2'>
-            <label className='col-12 producto-texto fs-6' htmlFor="rol">Rol del Usuario</label>
-            <select
-              className='col-lg-4 col-4 input-productos p-1 input-nombre rounded border border-black border-opacity-50'
-              name="rol"
-              id="rol"
-              value={rol}
-              onChange={(e) => setRol(e.target.value)}
-            >
-              <option value={"seleccionar"}>Roles</option>
-              <option value={"USER_ADMIN"}>Administrador</option>
-              <option value={"USER_NORMAL"}>Normal</option>
-            </select>
-          </div>
+        <div className={sectionInput}>
+          <label className={label} htmlFor="email">Email Usuario</label>
+          <input className={input} type="text" name="email" id="email" value={correo} maxLength={50} onChange={(e) => setCorreo(e.target.value)} />
         </div>
-
-        <div className='col-lg-12'>
-          <div className='mt-2 text-center'>
-            <input
-              className="my-2 mb-3 btn btn-dark"
-              type="submit"
-              value={editUser ? 'Editar Usuario' : 'Agregar Usuario'}
-            />
-          </div>
+        <div className={sectionInput}>
+          <label className={label} htmlFor="password">Contraseña Usuario</label>
+          <input className={input} type="text" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </div>
+        <div className={sectionInput}>
+          <label className={label} htmlFor="activo">Usuario Activo</label>
+          <select className={input} name="activo" id="activo" value={estado} onChange={(e) => setEstado(e.target.value)}            >
+            <option value={"seleccionar"}>Seleccione el estado</option>
+            <option value={true}>Si</option>
+            <option value={false}>No</option>
+          </select>
+        </div>
+        <div className={sectionInput}>
+          <label className={label} htmlFor="direc">Dirección Usuario</label>
+          <input className={input} name="direc" id="direc"  value={direc} onChange={(e) => setDirec(e.target.value)} />
+        </div>
+        <div className={sectionInput}>
+          <label className={label} htmlFor="rol">Rol del Usuario</label>
+          <select className={input} name="rol" id="rol" value={rol} onChange={(e) => setRol(e.target.value)}            >
+            <option value={"seleccionar"}>Roles</option>
+            <option value={"USER_ADMIN"}>Administrador</option>
+            <option value={"USER_NORMAL"}>Normal</option>
+          </select>
+        </div>
+        <div className='mx-auto mt-2'>
+          <input className="bg-neutral-900 hover:bg-neutral-700 duration-300 text-white py-1 w-40" type="submit" value={editUser ? 'Editar Usuario' : 'Agregar Usuario'} />
         </div>
       </form>
 
       <div className="resultado">
-        <UsuariosResultado
-          usuarios={usuarios}
-          editarUsuario={datosEdicion}
-          eliminarUsuario={eliminarUsuario} // Pasar la función eliminarUsuario como prop
-        />
+        <ListadoUsuarios />
       </div>
-    </main>
+    </main >
   );
 }
 

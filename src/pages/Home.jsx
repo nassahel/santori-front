@@ -12,7 +12,7 @@ import BuyModal from '../components/BuyModal';
 import CardSkeleton from '../components/CardSkeleton';
 
 
-const Home = () => {
+const Home = ({ setNumPedidos }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState(false);
@@ -52,7 +52,7 @@ const Home = () => {
 
   return (
     <div className='relative px-2'>
-      {modal && <BuyModal modalAction={openCloseModal} item={selectedProd} />}
+      {modal && <BuyModal modalAction={openCloseModal} item={selectedProd} setNumPedidos={setNumPedidos} />}
 
       <Categories />
       {loading && <CardSkeleton />}

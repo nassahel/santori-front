@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { TiShoppingCart } from "react-icons/ti";
 import { Link } from 'react-router-dom';
 
 
-const CartIcon = () => {
+const CartIcon = ({ numPedidos }) => {
+  const [contador, setContador] = useState(0)
+
+
+  useEffect(() => {
+    const pedid = JSON.parse(localStorage.getItem('pedido'))
+    setContador(pedid.productos.length)
+  }, [numPedidos])
+
   return (
-    <Link to="/orders" className='border-l text-white border-l-neutral-300 pl-2 py-1 duration-300'><TiShoppingCart size='25' /></Link>
+    <div className='border-l text-white border-l-neutral-300 pl-2 flex items-center justify-center h-10 relative duration-300'>
+     {
+      contador !== 0 && <span className='absolute top-0 text-xs bg-blue-600 rounded-full w-4 h-4 flex items-center justify-center right-0'>{contador}</span>
+     }
+      
+      <Link to="/orders" className=''><TiShoppingCart size='25' /></Link>
+
+    </div>
   )
 }
 

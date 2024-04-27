@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const [correo, setCorreo] = useState("");
@@ -64,7 +65,7 @@ const Login = () => {
             <input required maxLength='20' type="password" aria-describedby='password' className='focus:outline-none text-neutral-600' onChange={(e) => setPassword(e.target.value)} />
           </div>
           <div className='mb-3 d-flex justify-content-center'>
-            <button onClick={()=> alert("Ups! 😥 Página en desarrollo. \nEsta funcion estara disponible proximamente!")} className='bg-orange-400 text-white py-1 px-4 rounded-full' type='submit' >Iniciar Sesión</button>
+            <button onClick={()=> Login} className='bg-orange-400 text-white py-1 px-4 rounded-full' type='submit' >Iniciar Sesión</button>
           </div>
         </form>
         <div className='text-center'>
