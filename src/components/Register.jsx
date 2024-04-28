@@ -106,7 +106,7 @@ function Register() {
             <p className='ms-2'>Acepto los <Link to="#" className='underline hover:text-neutral-400'>Terminos y condiciones</Link> </p>
           </div>
 
-          <div className=' d-flex justify-content-center'>
+          <div className=' text-center mt-2'>
             <button onClick={() => alert("Ups! 😥 Página en desarrollo. \nEsta funcion estara disponible proximamente!")} type='submit' className='bg-orange-400 text-white py-1 px-4 rounded-full' >Registrarse</button>
           </div>
         </form>
