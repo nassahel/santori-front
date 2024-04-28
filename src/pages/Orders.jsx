@@ -48,10 +48,11 @@ const Orders = () => {
                     <p className='text-xl'>${prod.totalProducto}</p>
                   </div>
                   <div className='flex justify-between'>
-                    <div className='flex items-center justify-between w-20 bg-blue-500 text-white px-2 rounded-full'>
-                      <FaMinus className='cursor-pointer' />
+                    <div className='flex items-center justify-center gap-4 bg-blue-500 text-white px-2 rounded-full'>
+                      {/* <FaMinus className='cursor-pointer' /> */}
+                      <p>Cantidad:</p>
                       <p>{prod.quantity}</p>
-                      <FaPlus className='cursor-pointer' />
+                      {/* <FaPlus className='cursor-pointer' /> */}
                     </div>
                     <button onClick={() => deleteItem(prod._id)} className='font-semibold hover:underline'>Eliminar</button>
                   </div>
@@ -91,7 +92,7 @@ const Orders = () => {
               <p>${orden && orden.total}</p>
             </div>
             <div>
-              <button onClick={()=> alert("Ups! 😥 Página en desarrollo. \nEsta funcion estara disponible proximamente!")} className='bg-blue-500 w-full py-1 text-white font-semibold rounded-full hover:bg-blue-600 duration-300'>Confirmar compra</button>
+              <button onClick={() => alert("Ups! 😥 Página en desarrollo. \nEsta funcion estara disponible proximamente!")} className='bg-blue-500 w-full py-1 text-white font-semibold rounded-full hover:bg-blue-600 duration-300'>Confirmar compra</button>
             </div>
           </div>
 
