@@ -13,7 +13,7 @@ function App() {
  
 
   return (
-    <div className='principal flex flex-col min-h-screen bg-neutral-100'>
+    <div className='principal flex flex-col min-h-screen antialised bg-neutral-100 font-productsans'>
       
         <Routes>
           <Route path='/user/*' element={<User />} />
