@@ -8,9 +8,11 @@ import AboutUs from '../pages/AboutUs'
 import ProtectedRoutes from './ProtectedRoutes';
 import NavMovil from '../components/NavMovil'
 import Searcher from '../components/Searcher'
+import AlertModal from '../components/AlertModal'
 
 
 const Layout = () => {
+    const [alertModal, setAlertModal] = useState(true);
 
     const [auth, setAuth] = useState(false);
     const userAdmin = () => {
@@ -19,6 +21,7 @@ const Layout = () => {
 
     return (
         <div className='min-h-screen flex flex-col'>
+            {alertModal && <AlertModal setAlertModal={setAlertModal} />}
             <Navbar />
             <NavMovil />
             <Searcher />
