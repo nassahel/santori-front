@@ -10,6 +10,7 @@ import bannerRapi from '/assets/img/banner-rapi.jpg'
 import { useParams } from 'react-router-dom';
 import BuyModal from '../components/BuyModal';
 import CardSkeleton from '../components/CardSkeleton';
+import AlertModal from '../components/AlertModal';
 
 
 const Home = () => {
@@ -53,6 +54,7 @@ const Home = () => {
   return (
     <div className='relative px-2'>
       {modal && <BuyModal modalAction={openCloseModal} item={selectedProd} />}
+      
 
       <Categories />
       {loading && <CardSkeleton />}
