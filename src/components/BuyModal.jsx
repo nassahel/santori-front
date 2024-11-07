@@ -4,7 +4,7 @@ import { FaPlus, FaMinus } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 
 
-const BuyModal = ({ modalAction, item }) => {
+const BuyModal = ({ modalAction, item, setNumPedidos }) => {
   const [cant, setCant] = useState(1)
   const [total, setTotal] = useState(null)
   const [coment, setComent] = useState('')
@@ -15,6 +15,8 @@ const BuyModal = ({ modalAction, item }) => {
 
 
   const saveLocal = () => {
+    setTotal(cant * item.price)
+
     const itemPedido = {
       ...item,
       quantity: cant,
@@ -31,15 +33,26 @@ const BuyModal = ({ modalAction, item }) => {
       localStorage.setItem('pedido', JSON.stringify(pedido))
     } else {
       const pedido = JSON.parse(localStorage.getItem('pedido'))
-      pedido.productos.push(itemPedido)
-      let totalPedido = 0;
-      pedido.productos.forEach((prod) => (
-        console.log(prod),
-        totalPedido = totalPedido + prod.totalProducto
-      ))
-      pedido.total = totalPedido
-      localStorage.setItem('pedido', JSON.stringify(pedido))
+      const itemFound = pedido.productos.find(objeto => objeto.name === item.name);
+      console.log('producto', itemFound);
+      if (itemFound) {
+        itemFound.quantity += cant;
+        console.log('pedido actualizada', pedido);
+        localStorage.setItem('pedido', JSON.stringify(pedido))
+
+      } else {
+        pedido.productos.push(itemPedido)
+        let totalPedido = 0;
+        pedido.productos.forEach((prod) => (
+          console.log(prod),
+          totalPedido = totalPedido + prod.totalProducto
+        ))
+        pedido.total = totalPedido
+        localStorage.setItem('pedido', JSON.stringify(pedido))
+      }
     }
+    const pedid = JSON.parse(localStorage.getItem('pedido'))
+    setNumPedidos(pedid.productos.length)
     modalAction()
   }
 

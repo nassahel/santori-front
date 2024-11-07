@@ -5,28 +5,23 @@ import { Routes, Route } from 'react-router-dom'
 import Home from '../pages/Home'
 import Orders from '../pages/Orders'
 import AboutUs from '../pages/AboutUs'
-import ProtectedRoutes from './ProtectedRoutes';
 import NavMovil from '../components/NavMovil'
 import Searcher from '../components/Searcher'
 
 
 const Layout = () => {
-
-    const [auth, setAuth] = useState(false);
-    const userAdmin = () => {
-        setAuth(true);
-    };
+const [numPedidos, setNumPedidos] = useState(0)
+  
 
     return (
         <div className='min-h-screen flex flex-col'>
-            <Navbar />
+            <Navbar numPedidos={numPedidos} />
             <NavMovil />
             <Searcher />
             <Routes>
-                <Route path='/:category?/' element={<Home />} />
-                <Route path='/orders' element={<Orders />} />
-                <Route path='/about' element={<AboutUs />} />
-                <Route path='/admin/*' element={<ProtectedRoutes auth={auth} userAdmin={userAdmin} />} />
+                <Route path='/:category?/' element={<Home setNumPedidos={setNumPedidos} />} />
+                <Route path='/orders' element={<Orders setNumPedidos={setNumPedidos} />} />
+                <Route path='/about' element={<AboutUs />} />                
             </Routes>
             <Footer />
         </div>

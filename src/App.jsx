@@ -10,7 +10,10 @@ import Layout from './routes/Layout'
 import ProtectedRoutes from './routes/ProtectedRoutes'
 
 function App() {
- 
+  const [auth, setAuth] = useState(true);
+  const userAdmin = () => {
+      setAuth(true);
+  };
 
   return (
     <div className='principal flex flex-col min-h-screen antialised bg-neutral-100 font-productsans'>
@@ -19,6 +22,7 @@ function App() {
           <Route path='/user/*' element={<User />} />
           <Route path='/*' element={<Layout />} /> 
           <Route path='*' element={<NotFound />} />
+          <Route path='/admin/*' element={<ProtectedRoutes auth={auth} userAdmin={userAdmin} />} />
         </Routes>
     </div>
   );
