@@ -14,6 +14,7 @@ const Pedidos = ({setBtnActive}) => {
         <ListadoPedidos/>       
     </main>
   );
+  
 }
 
 export default Pedidos;
