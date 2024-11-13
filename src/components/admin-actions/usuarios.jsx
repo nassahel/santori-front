@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2'
 import ListadoUsuarios from './ListadoUsuarios';
 
-function Usuarios({setBtnActive}) {
+function Usuarios({ setBtnActive }) {
 
   const [usuarios, setUsuarios] = useState([]);
   const [idUsuario, setidUsuario] = useState()
@@ -210,7 +210,7 @@ function Usuarios({setBtnActive}) {
         </div>
         <div className={sectionInput}>
           <label className={label} htmlFor="direc">Dirección Usuario</label>
-          <input className={input} name="direc" id="direc"  value={direc} onChange={(e) => setDirec(e.target.value)} />
+          <input className={input} name="direc" id="direc" value={direc} onChange={(e) => setDirec(e.target.value)} />
         </div>
         <div className={sectionInput}>
           <label className={label} htmlFor="rol">Rol del Usuario</label>

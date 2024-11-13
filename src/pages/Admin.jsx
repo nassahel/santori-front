@@ -6,7 +6,7 @@ import Logo from '/assets/img/logo-transparente.png'
 import Usuarios from '../components/admin-actions/Usuarios';
 import Productos from '../components/admin-actions/Productos';
 import Pedidos from '../components/admin-actions/Pedidos';
-
+ ///actualizado
 
 function Admin() {
   const [btnActive, setBtnActive] = useState('')
