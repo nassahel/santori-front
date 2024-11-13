@@ -3,9 +3,9 @@ import Pclogo from '/assets/img/pclogo.png'
 import { Link, Route, Routes } from 'react-router-dom';
 import { MdExitToApp } from "react-icons/md";
 import Logo from '/assets/img/logo-transparente.png'
-import Usuarios from '../components/admin-actions/Usuarios';
-import Productos from '../components/admin-actions/Productos';
-import Pedidos from '../components/admin-actions/Pedidos';
+import Usuarios from '../components/admin-actions/Usuarioss';
+import Productos from '../components/admin-actions/Productoss';
+import Pedidos from '../components/admin-actions/Pedidoss';
  ///actualizado
 
 function Admin() {
