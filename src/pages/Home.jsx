@@ -1,16 +1,13 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import Categories from '../components/Categories';
 import { CardComidas } from '../components/CardComidas';
 import Banner from '../components/Banner';
 import MostWanted from '../components/MostWanted';
 import banner from '/assets/img/banner1.png'
-import bannerYa from '/assets/img/baner-ya.png'
 import bannerRapi from '/assets/img/banner-rapi.jpg'
 import { useParams } from 'react-router-dom';
 import BuyModal from '../components/BuyModal';
 import CardSkeleton from '../components/CardSkeleton';
-import AlertModal from '../components/AlertModal';
 
 
 const Home = ({ setNumPedidos }) => {

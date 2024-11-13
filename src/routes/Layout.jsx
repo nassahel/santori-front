@@ -11,18 +11,20 @@ import AlertModal from '../components/AlertModal'
 
 
 const Layout = () => {
-const [numPedidos, setNumPedidos] = useState(0)
-  
+    const [numPedidos, setNumPedidos] = useState(0)
+    const [alertModal, setAlertModal] = useState(true)
+
 
     return (
         <div className='min-h-screen flex flex-col'>
+            {alertModal && <AlertModal setAlertModal={setAlertModal} />}
             <Navbar numPedidos={numPedidos} />
             <NavMovil />
             <Searcher />
             <Routes>
                 <Route path='/:category?/' element={<Home setNumPedidos={setNumPedidos} />} />
                 <Route path='/orders' element={<Orders setNumPedidos={setNumPedidos} />} />
-                <Route path='/about' element={<AboutUs />} />                
+                <Route path='/about' element={<AboutUs />} />
             </Routes>
             <Footer />
         </div>
