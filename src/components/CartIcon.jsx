@@ -9,7 +9,8 @@ const CartIcon = ({ numPedidos }) => {
 
   useEffect(() => {
     const pedid = JSON.parse(localStorage.getItem('pedido'))
-    setContador(pedid.productos.length)
+
+    pedid && setContador(pedid.productos.length)
   }, [numPedidos])
 
   return (
