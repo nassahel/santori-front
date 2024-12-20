@@ -15,9 +15,8 @@ export const getMenus = async () => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': token ? `Bearer ${token}` : ''
+      'Authorization': `Bearer ${token}`
     }
   })
   return response.json()
-
 }

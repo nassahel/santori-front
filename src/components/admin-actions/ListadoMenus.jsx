@@ -11,6 +11,7 @@ const ListadoMenus = ({ setBtnActive }) => {
     setBtnActive('Menus')
     getMenus()
       .then(setMenus)
+      .catch(error => console.log(error))
   }, [])
 
   const claseUlt = 'border h-full flex items-center justify-center w-1/3'
