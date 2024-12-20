@@ -4,10 +4,12 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from 'sweetalert2';
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { format } from 'date-fns';
+import { getUserById } from '../../services/users.services';
 
 const ListadoPedidos = ({ setBtnActive }) => {
   const [pedidos, setPedidos] = useState(null)
   const [detail, setDetail] = useState(null)
+  const [user, setUser] = useState(null);
 
   let token = localStorage.getItem('token');
 
@@ -44,7 +46,7 @@ const ListadoPedidos = ({ setBtnActive }) => {
   }
 
 
-  const orderSwitch = async (idPedido) => {
+  const orderSwitch = async (idPedido, idUsuario) => {
     try {
       const url = `${import.meta.env.VITE_URL}orders/`
       const response = await fetch(url + idPedido, {
@@ -54,15 +56,11 @@ const ListadoPedidos = ({ setBtnActive }) => {
           'Content-type': 'application/json'
         }
       })
-
       getPedidos()
     } catch (error) {
       console.log('No se pudo eliminar el pedido', error);
     }
   }
-
-  console.log(pedidos);
-
 
   const getPedidos = async () => {
     try {
@@ -84,15 +82,26 @@ const ListadoPedidos = ({ setBtnActive }) => {
 
   useEffect(() => {
     setBtnActive('Pedidos')
-
     getPedidos()
   }, [])
 
 
 
-  const expandOrder = (i) => {
-    detail === null ? setDetail(i) : setDetail(null)
+  const expandOrder = (i, userId) => {
+    if (detail === null) {
+      getUserById(userId)
+        .then((data) => setUser(data))
+        .catch(error => console.log(error))
+      setDetail(i)
+    } else {
+      setDetail(null)
+      setUser(null)
+    }
   }
+
+  console.log(user);
+
+
 
   return (
     <section>
@@ -107,7 +116,7 @@ const ListadoPedidos = ({ setBtnActive }) => {
                 pedidos.map((pedido, i) => (
                   <article key={i} className=''>
                     <div className=' flex rounded-sm py-1 border-b-2 bg-white'>
-                      <button onClick={() => expandOrder(i)} className='px-2 border-e'>
+                      <button onClick={() => expandOrder(i, pedido.clientId)} className='px-2 border-e'>
                         {detail === i ? <IoIosArrowUp /> : <IoIosArrowDown />}
 
                       </button>
@@ -121,6 +130,14 @@ const ListadoPedidos = ({ setBtnActive }) => {
                       </div>
                     </div>
                     <div className=''>
+                      {
+                        (user && detail === i) && <div className='flex border-b  py-2 ms-8 bg-white'>
+                          <p className='border-e px-3 bg-orange-300'>Info del Cliente: </p>
+                          <p className='border-e px-3'><span className='text-orange-500 italic me-2 text-sm'>Nombre:</span>{user.name}</p>
+                          <p className='border-e px-3'><span className='text-orange-500 italic me-2 text-sm'>Dirección:</span>{user.direction}</p>
+                          <p className='border-e px-3'><span className='text-orange-500 italic me-2 text-sm'>Email:</span>{user.email}</p>
+                        </div>
+                      }
                       {detail === i &&
                         pedido.productos.map((item, i) => (
                           <div key={i} className='flex border-b  py-2 ms-8 bg-white'>
