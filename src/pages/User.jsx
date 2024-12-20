@@ -11,7 +11,7 @@ function User() {
   return (
     <div className=' flex flex-col bg-neutral-100 h-screen '>
       <nav className='flex h-[4rem] bg-orange-500 items-center text-white text-xl font-semibold shadow z-10'>
-        <Link to='/' className='flex items-center gap-2 h-full pl-1 pr-7 duration-300 hover:bg-red-500'>
+        <Link to='/' className='flex items-center gap-2 h-full pl-1 pr-7 duration-300 hover:bg-yellow-400'>
           <MdArrowBackIosNew />
           <p>Volver</p>
         </Link>

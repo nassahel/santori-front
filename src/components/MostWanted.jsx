@@ -1,7 +1,8 @@
 import React from 'react'
 import Burg from "/assets/img/most-burger.png"
 import Pizz from "/assets/img/most-pizza.png"
-import Sushi from "/assets/img/most-sushi.png"
+// import Sushi from "/assets/img/most-sushi.png"
+import Sandwich from "/assets/img/most-sandwich.png"
 import { Link } from 'react-router-dom'
 
 
@@ -9,7 +10,7 @@ const MostWanted = () => {
   const foods = [
     { id: "1", name: "Hamburguesas", img: Burg, link: "#" },
     { id: "2", name: "Pizzas", img: Pizz, link: "#" },
-    { id: "3", name: "Sushi", img: Sushi, link: "#" },
+    { id: "3", name: "Sandwiches", img: Sandwich, link: "#" },
   ]
 
   return (

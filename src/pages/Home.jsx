@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
 import Categories from '../components/Categories';
 import { CardComidas } from '../components/CardComidas';
@@ -11,6 +11,8 @@ import { useParams } from 'react-router-dom';
 import BuyModal from '../components/BuyModal';
 import CardSkeleton from '../components/CardSkeleton';
 import AlertModal from '../components/AlertModal';
+import { menuesByCateogry } from '../services/products.services';
+import { AppContext } from '../context/ContextProvider';
 
 
 const Home = ({ setNumPedidos }) => {
@@ -18,57 +20,61 @@ const Home = ({ setNumPedidos }) => {
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState(false);
   const [selectedProd, setSelectedProd] = useState(null);
-
+  const { search } = useContext(AppContext);
 
   const openCloseModal = (product) => {
-    !modal ? setModal(true) : setModal(false)
+    setModal(!modal)
     setSelectedProd(product)
   }
 
   const { category } = useParams();
-
   const defCategory = category || 'sandwichs'
 
-  const productsStore = async () => {
-    try {
-      const data = await fetch(`https://santori-back.onrender.com/api/menu/${defCategory}`);
-
-      if (!data.ok) {
-        throw new Error('No se pudo obtener los datos del servidor');
-      }
-      const prom = await data.json();
-      const menues = prom;
-
-      setProducts(menues);
-      setLoading(false);
-    } catch (error) {
-      console.error('Ocurrió un error:', error);
-
-    }
-  }
-
   useEffect(() => {
-    productsStore();
+    setLoading(true);
+    menuesByCateogry(defCategory)
+      .then(setProducts)
+      .catch((error) => console.error('Error al obtener los datos:', error))
+      .finally(() => setLoading(false));
   }, [category]);
+
+
+  let filteredProducts = products.filter(item => item.name.toLowerCase().includes(search.trim().toLowerCase()))
+  console.log(filteredProducts);
+  console.log(search);
+  
+  
 
   return (
     <div className='relative px-2'>
       {modal && <BuyModal modalAction={openCloseModal} item={selectedProd} setNumPedidos={setNumPedidos} />}
-
       <Categories />
-      {loading && <CardSkeleton />}
-      <div className='flex flex-wrap xl:w-3/4 mx-auto lg:mt-10'>
-        {
-          (products.map((product, i) => (
-            <CardComidas action={() => openCloseModal(product)} key={i} product={product} />
-          )))
-        }
-      </div>
-      <Banner image={bannerRapi} />
+      {
+        search === '' ? <div>
+          {loading && <CardSkeleton />}
+          <div className='flex flex-wrap xl:w-3/4 mx-auto lg:mt-10'>
+            {products.length === 0 ? <div className='text-center flex items-center justify-center bg-neutral-200 rounded-md w-full h-[10rem]'> <p>No hay productos en esta categoria 😣</p></div> :
+              (products.map((product, i) => (
+                <CardComidas action={() => openCloseModal(product)} key={i} product={product} />
+              )))
+            }
+          </div>
+        </div> 
+        :
+        <div>
+          <div className='flex flex-wrap xl:w-3/4 mx-auto lg:mt-10'>
+            {filteredProducts.length === 0 ? <div className='text-center flex items-center justify-center bg-neutral-200 rounded-md w-full h-[10rem]'> <p>No hay productos que coincidan</p></div> :
+              (filteredProducts.map((product, i) => (
+                <CardComidas action={() => openCloseModal(product)} key={i} product={product} />
+              )))
+            }
+          </div>
+        </div>
+      }
 
+      <Banner image={bannerRapi} />
       <MostWanted />
       <Banner image={banner} />
-
     </div>
 
   )

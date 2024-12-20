@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AiOutlineClose } from "react-icons/ai";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 
 const BuyModal = ({ modalAction, item, setNumPedidos }) => {
@@ -14,7 +15,9 @@ const BuyModal = ({ modalAction, item, setNumPedidos }) => {
   }, [cant])
 
 
+
   const saveLocal = () => {
+    const { userId } = jwtDecode(localStorage.getItem('token'))
     setTotal(cant * item.price)
 
     const itemPedido = {
@@ -25,9 +28,9 @@ const BuyModal = ({ modalAction, item, setNumPedidos }) => {
     }
     if (!localStorage.getItem('pedido')) {
       const pedido = {
-        fecha: new Date(),
         productos: [],
         total: itemPedido.totalProducto,
+        clientId: userId
       };
       pedido.productos.push(itemPedido)
       localStorage.setItem('pedido', JSON.stringify(pedido))
@@ -37,7 +40,7 @@ const BuyModal = ({ modalAction, item, setNumPedidos }) => {
       console.log('producto', itemFound);
       if (itemFound) {
         itemFound.quantity += cant;
-        console.log('pedido actualizada', pedido);
+        console.log('pedido actualizado', pedido);
         localStorage.setItem('pedido', JSON.stringify(pedido))
 
       } else {
@@ -65,9 +68,9 @@ const BuyModal = ({ modalAction, item, setNumPedidos }) => {
             <h2 className='w-11/12 text-center ml-6'>{item.name}</h2>
             <AiOutlineClose onClick={modalAction} className='w-1/12 cursor-pointer mr-2 absolute right-0' />
           </div>
-          <img src={item.image} alt={item.name} className='w-10/12 max-h-[13rem] object-cover rounded-md mb-4' />
+          <img src={item.productImage} alt={item.name} className='w-10/12 max-h-[13rem] object-cover rounded-md mb-4' />
           <div className='flex justify-between items-center'>
-            <p className='w-9/12 '>{item.detail}</p>
+            <p className='w-9/12 '>{item.description}</p>
             <p className='w-2/12 font-bold text-xl text-end'>${item.price}</p>
           </div>
         </div>

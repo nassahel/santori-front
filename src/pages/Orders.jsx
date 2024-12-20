@@ -1,13 +1,52 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { FaPlus, FaMinus } from "react-icons/fa6";
+import Swal from 'sweetalert2';
 
 
-const Orders = ({setNumPedidos}) => {
+const Orders = ({ setNumPedidos }) => {
   const [orden, setOrden] = useState();
   const [envio, setEnvio] = useState(0)
   const [modal, setModal] = useState(false);
 
+
+  const sendOrder = async () => {
+    if (!orden || !orden.productos || orden.productos.length === 0) {
+      return Swal.fire("El carrito está vacío", "Agrega productos antes de confirmar el pedido", "warning");
+    }
+
+    Swal.fire({
+      title: "¿Realizar pedido?",
+      showCancelButton: true,
+      confirmButtonText: "Si",
+      cancelButtonText: 'No'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const url = `${import.meta.env.VITE_URL}orders`
+          const token = localStorage.getItem('token');
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(orden),
+          });
+          if (!response.ok) {
+            throw new Error("Error al procesar la orden");
+          }
+          localStorage.removeItem('pedido')
+          await Swal.fire("Pedido enviado con exito!", "", "success");
+          setOrden(null);
+          setNumPedidos(0);
+          window.location.reload()
+        } catch (error) {
+          Swal.fire("No se pudo crear la orden", "", "error");
+          return { message: 'no se pudo crear la orden', error }
+        }
+      }
+    });
+  }
 
 
   const setearOrden = async () => {
@@ -18,6 +57,10 @@ const Orders = ({setNumPedidos}) => {
   useEffect(() => {
     setearOrden()
   }, [])
+
+
+  console.log(orden);
+
 
 
   const deleteItem = async (id) => {
@@ -33,17 +76,19 @@ const Orders = ({setNumPedidos}) => {
     setNumPedidos(pedid.productos.length)
   }
 
-  // console.log(orden);
+  console.log(orden);
+
 
   return (
     <div className='w-full max-w-[80rem] mx-auto lg:flex py-6  '>
       <div className='w-full xl:w-3/4 p-2 '>
         <div className='flex flex-col gap-3' >
-          {
-            orden ? (orden.productos.map((prod, i) => (
+          {orden == null || orden.productos.length === 0 ? <div className='  border-2 w-full h-[15.5rem] flex items-center text-neutral-700 italic justify-center'><p>No tenés ningun producto en el carrito</p></div>
+            :
+            (orden.productos.map((prod, i) => (
               <div key={i} className='bg-white border h-[8rem] flex rounded-md p-4' >
                 <div className='w-2/12 overflow-hidden'>
-                  <img src={prod.image} alt="" className='h-full w-full object-cover rounded-sm' />
+                  <img src={prod.productImage} alt="" className='h-full w-full object-cover rounded-sm' />
                 </div>
                 <div className='w-9/12 ml-6 flex flex-col justify-between'>
                   <div className='flex w-full justify-between'>
@@ -62,8 +107,6 @@ const Orders = ({setNumPedidos}) => {
                 </div>
               </div>
             )))
-              :
-              (<p>Cargando...</p>)
           }
         </div>
       </div>
@@ -76,7 +119,7 @@ const Orders = ({setNumPedidos}) => {
           <div className='flex flex-col lg:gap-1'>
             <div className='flex justify-between'>
               <p>Productos</p>
-              <p>${orden && orden.total}</p>
+              <p>${orden ? orden.total : '0'}</p>
             </div>
             <div className='flex justify-between'>
               <p>Envio</p>
@@ -84,17 +127,17 @@ const Orders = ({setNumPedidos}) => {
             </div>
             <Link className='flex justify-between'>
               <p className='text-blue-500 font-semibold'>Cupón de descuento</p>
-              <p>-</p>
+              <p>Sin cupón</p>
             </Link>
           </div>
 
           <div className='flex flex-col gap-2 '>
             <div className='flex justify-between text-lg font-semibold'>
               <p className=''>Total</p>
-              <p>${orden && orden.total}</p>
+              <p>${orden ? orden.total : '0'}</p>
             </div>
             <div>
-              <button onClick={() => alert("Ups! 😥 Página en desarrollo. \nEsta funcion estara disponible proximamente!")} className='bg-blue-500 w-full py-1 text-white font-semibold rounded-full hover:bg-blue-600 duration-300'>Confirmar compra</button>
+              <button onClick={sendOrder} className='bg-blue-500 w-full py-1 text-white font-semibold rounded-full hover:bg-blue-600 duration-300'>Confirmar compra</button>
             </div>
           </div>
         </div>

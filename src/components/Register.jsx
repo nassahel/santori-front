@@ -4,20 +4,19 @@ import Swal from 'sweetalert2'
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 function Register() {
-  const [nombre, setNombre] = useState("");
-  const [correo, setCorreo] = useState("");
-  const [direc, setDirec] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [direction, setDirection] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
-  const [rol, setRol] = useState("USER_NORMAL");
   const [eyePass, setEyePass] = useState(false);
   const [eyeConf, setEyeConf] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (nombre === "" || correo === "" || direc === "" || password === "" || confirmPassword === "") {
+    if (name === "" || email === "" || direction === "" || password === "" || confirmPassword === "") {
       setError(true);
       return;
     } else if (password !== confirmPassword) {
@@ -27,13 +26,17 @@ function Register() {
     setError(false);
 
     try {
-      const response = await fetch('https://santori-back.onrender.com/api/usuarios', {
+      const url = `${import.meta.env.VITE_URL}users`
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nombre, correo, direc, password, rol, estado: true }),
+        body: JSON.stringify({ name, email, direction, password }),
       });
+
+      console.log(response);
+      
 
       if (!response.ok) {
         console.error('Error en el registro:', response.statusText);
@@ -45,10 +48,11 @@ function Register() {
           confirmButtonColor: "#2c4b45",
           showCloseButton: true
         })
+        return
       }
 
       limpiarFormulario();
-      window.location.href = ('/login');
+      window.location.href = ('/user/login');
 
     } catch (error) {
       console.error('Error en la solicitud:', error);
@@ -56,9 +60,9 @@ function Register() {
   };
 
   const limpiarFormulario = () => {
-    setNombre("");
-    setCorreo("");
-    setDirec("");
+    setName("");
+    setEmail("");
+    setDirection("");
     setPassword("");
     setConfirmPassword("");
     document.getElementById("miFormulario").reset();
@@ -73,15 +77,15 @@ function Register() {
           </div>
           <div className='flex flex-col border-b  '>
             <label className='font-semibold mb-1' >Nombre y apellido:</label>
-            <input className='focus:outline-none text-neutral-600' required aria-describedby="name" maxLength='50' type="text" onChange={(e) => setNombre(e.target.value)} />
+            <input className='focus:outline-none text-neutral-600' required aria-describedby="name" maxLength='50' type="text" onChange={(e) => setName(e.target.value)} />
           </div>
           <div className='flex flex-col border-b'>
             <label className='font-semibold mb-1' >Correo:</label>
-            <input className='focus:outline-none text-neutral-600' required type="email" maxLength='50' aria-describedby="correo" onChange={(e) => setCorreo(e.target.value)} />
+            <input className='focus:outline-none text-neutral-600' required type="email" maxLength='50' aria-describedby="correo" onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className='flex flex-col border-b'>
             <label className='font-semibold mb-1' >Dirección:</label>
-            <input className='focus:outline-none text-neutral-600' required type="text" maxLength='50' aria-describedby="direc" onChange={(e) => setDirec(e.target.value)} />
+            <input className='focus:outline-none text-neutral-600' required type="text" maxLength='50' aria-describedby="direc" onChange={(e) => setDirection(e.target.value)} />
           </div>
           <div className='flex flex-col border-b'>
             <label className='font-semibold mb-1' >Contraseña:</label>
@@ -98,16 +102,15 @@ function Register() {
                 {!eyeConf ? <IoEyeOffOutline onClick={() => setEyeConf(true)} size="20" /> : <IoEyeOutline size="20" onClick={() => setEyeConf(false)} />}
               </div>
             </div>
-            <p className='text-info' id="confirmPasswordHelpBlock">*Por favor, repita la misma contraseña.</p>
+            <p className='text-sm' id="confirmPasswordHelpBlock">*Por favor, repita la misma contraseña.</p>
           </div>
 
           <div className='flex justify-center'>
             <input required name="terminos-condiciones" type={'checkbox'} />
             <p className='ms-2'>Acepto los <Link to="#" className='underline hover:text-neutral-400'>Terminos y condiciones</Link> </p>
           </div>
-
           <div className=' text-center mt-2'>
-            <button onClick={() => alert("Ups! 😥 Página en desarrollo. \nEsta funcion estara disponible proximamente!")} type='submit' className='bg-orange-400 text-white py-1 px-4 rounded-full' >Registrarse</button>
+            <button type='submit' className='bg-orange-400 text-white py-1 px-4 rounded-full' >Registrarse</button>
           </div>
         </form>
         <div className='text-center'>

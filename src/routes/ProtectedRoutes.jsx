@@ -1,17 +1,18 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Admin from '../pages/Admin'
+import React, { useContext } from 'react'
+import { AppContext } from '../context/ContextProvider'
+import { Navigate } from 'react-router-dom';
 
-export default function ProtectedRouteWrapper({ auth, userAdmin }) {
-  if (!auth) {
-    return <Navigate to='/' />;
+const ProtectedRoutes = ({ children }) => {
+  const { globalData } = useContext(AppContext);
+
+
+  if (!globalData?.loggedUser) {
+    return <Navigate to="/" />;
   }
 
-  userAdmin();
-
-  return (
-    <Routes>
-      <Route path='/*' element={<Admin />} />
-    </Routes>
-  );
+  const allowedRoles = ['ADMIN', 'SUPERADMIN']
+  if (allowedRoles.includes(globalData.loggedUser.rol)) return children
+  return <Navigate to="/" />
 }
+
+export default ProtectedRoutes

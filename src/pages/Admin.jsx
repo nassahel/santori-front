@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Pedidos from '../components/admin-actions/Pedidos'
-import Usuarios from '../components/admin-actions/Usuarios'
-import Productos from '../components/admin-actions/Productos';
 import Pclogo from '/assets/img/pclogo.png'
 import { Link, Route, Routes } from 'react-router-dom';
 import { MdExitToApp } from "react-icons/md";
 import Logo from '/assets/img/logo-transparente.png'
+import ListadoUsuarios from '../components/admin-actions/ListadoUsuarios';
+import ListadoPedidos from '../components/admin-actions/ListadoPedidos';
+import ListadoMenus from '../components/admin-actions/ListadoMenus';
 
 
 function Admin() {
@@ -20,17 +20,16 @@ function Admin() {
   ]
 
   return (
-    <>
+    <div>
       <section className='lg:hidden bg-neutral-200 h-screen flex text-center text-neutral-600  flex-col items-center justify-center px-4'>
         <p className='font-bold text-lg'>Santori Delivery</p>
         <img src={Pclogo} alt="logo PC" className='w-1/3' />
         <p>Esta pagina solo puede verse desde una pc</p>
         <p>Por favor conectese desde una Pc para usar el modo administrador</p>
         <Link to="/" className='bg-neutral-700 px-2 py-1 text-neutral-300 hover:bg-neutral-600 rounded-sm mt-4'>Volver al inicio</Link>
-
       </section>
 
-      <section className='min-h-screen hidden lg:flex flex-col  '>
+      <section className='min-h-screen hidden lg:flex flex-col'>
         <header className='bg-neutral-800 h-[3rem] border-b-2 flex  border-neutral-600  text-white'>
           <Link to="/" className={`flex items-center justify-center gap-2 w-60 h-full border-r ${styleBlack} `}>
             <MdExitToApp />
@@ -61,14 +60,14 @@ function Admin() {
           </aside>
           <main className='w-10/12 p-6 mx-auto '>
             <Routes>
-              <Route path="/usuarios" element={<Usuarios setBtnActive={setBtnActive} />} />
-              <Route path="/pedidos" element={<Pedidos setBtnActive={setBtnActive} />} />
-              <Route path="/menus" element={<Productos setBtnActive={setBtnActive} />} />
+              <Route path="/usuarios" element={<ListadoUsuarios setBtnActive={setBtnActive} />} />
+              <Route path="/pedidos" element={<ListadoPedidos setBtnActive={setBtnActive} />} />
+              <Route path="/menus" element={<ListadoMenus setBtnActive={setBtnActive} />} />
             </Routes>
           </main>
         </section>
       </section>
-    </>
+    </div>
   )
 }
 

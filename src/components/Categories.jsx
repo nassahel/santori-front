@@ -26,8 +26,8 @@ const Categories = () => {
       img: pizzas,
     },
     {
-      title: "Carnes",
-      link: "carnes",
+      title: "Minutas",
+      link: "minutas",
       img: carne,
     },
     {
