@@ -10,7 +10,7 @@ Además, hemos implementado un sistema de autenticación de usuarios que permite
 
 ## Tecnologías Utilizadas
 * React
-* Bootstrap
+* Tailwind
 * Node.js
 * Express
 * MongoDB

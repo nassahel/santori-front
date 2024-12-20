@@ -1,28 +1,31 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+
 
 const Login = () => {
-  const [correo, setCorreo] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const [eyePass, setEyePass] = useState(false);
 
-  const botonIniciar = async (e) => {
-    e.preventDefault();
 
-    if (correo === "" || password === "") {
+
+  const TryLogin = async () => {
+    if (email === "" || password === "") {
       setError(true);
       return;
     } else {
       setError(false);
-
       try {
-        const response = await fetch('https://santori-back.onrender.com/api/auth/login', {
+        const url = `${import.meta.env.VITE_URL}login`
+        const response = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ correo, password }),
+          body: JSON.stringify({ email, password }),
         });
 
         if (!response.ok) {
@@ -37,9 +40,11 @@ const Login = () => {
           })
         } else {
           const data = await response.json();
+          console.log(data);
+
           const token = data.token;
           localStorage.setItem('token', token);
-          setCorreo("");
+          setEmail("");
           setPassword("");
           window.location.href = ('/');
         }
@@ -52,22 +57,25 @@ const Login = () => {
   return (
     <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
       <div className=' w-10/12 max-w-[26rem]'>
-        <form id="miFormulario" onSubmit={botonIniciar} className='bg-white rounded-md shadow-sm py-12 mb-2 px-4 flex flex-col gap-4 '>
+        <div id="miFormulario" className='bg-white rounded-md shadow-sm py-12 mb-2 px-4 flex flex-col gap-4 '>
           <div className=''>
             <h3 className='text-center font-semibold text-xl'>Inicio de sesión</h3>
           </div>
           <div className='flex flex-col border-b  '>
             <label className='font-semibold mb-1' >Correo:</label>
-            <input required maxLength='50' type='email' className='focus:outline-none text-neutral-600' aria-describedby='email'  onChange={(e) => setCorreo(e.target.value)} />
+            <input required maxLength='50' type='email' className='focus:outline-none text-neutral-600' aria-describedby='email' onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className='flex flex-col border-b'>
-            <label className='font-semibold mb-1'>Contraseña:</label>
-            <input required maxLength='20' type="password" aria-describedby='password' className='focus:outline-none text-neutral-600' onChange={(e) => setPassword(e.target.value)} />
+            <label className='font-semibold mb-1' >Contraseña:</label>
+            <div className='flex justify-between'>
+              <input className='focus:outline-none text-neutral-600 w-full' required maxLength='20' type={eyePass ? 'text' : 'password'} aria-describedby="passwordHelpBlock" onChange={(e) => setPassword(e.target.value)} />
+              {!eyePass ? <IoEyeOffOutline onClick={() => setEyePass(true)} size="20" /> : <IoEyeOutline size="20" onClick={() => setEyePass(false)} />}
+            </div>
           </div>
-          <div className='mb-3 d-flex justify-content-center'>
-            <button onClick={()=> Login} className='bg-orange-400 text-white py-1 px-4 rounded-full' type='submit' >Iniciar Sesión</button>
+          <div className='mt-8 flex justify-center'>
+            <button onClick={TryLogin} className='bg-orange-400 text-white py-1 px-4 rounded-full' >Iniciar Sesión</button>
           </div>
-        </form>
+        </div>
         <div className='text-center'>
           <Link className='' to="../register">¿No tenés cuenta? <span className='underline font-semibold'>Registrate</span></Link>
         </div>
