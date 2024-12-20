@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import Loadinggif from '/assets/img/loading.gif'
 
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [eyePass, setEyePass] = useState(false);
+  const [loading, setLoading] = useState(false)
 
 
 
@@ -19,6 +21,7 @@ const Login = () => {
     } else {
       setError(false);
       try {
+        setLoading(true)
         const url = `${import.meta.env.VITE_URL}login`
         const response = await fetch(url, {
           method: 'POST',
@@ -73,7 +76,7 @@ const Login = () => {
             </div>
           </div>
           <div className='mt-8 flex justify-center'>
-            <button onClick={TryLogin} className='bg-orange-400 text-white py-1 px-4 rounded-full' >Iniciar Sesión</button>
+            <button onClick={TryLogin} className='bg-orange-400 text-white py-1 w-[9rem] h-8 flex items-center justify-center rounded-full' >{loading ? <img src={Loadinggif} alt="load" className='w-5' /> : 'Iniciar Sesión'}</button>
           </div>
         </div>
         <div className='text-center'>

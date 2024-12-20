@@ -1,22 +1,34 @@
 const url = `${import.meta.env.VITE_URL}products/`
 
 export const menuesByCateogry = async (category) => {
-  const response = await fetch(url + category);
-  if (!response.ok) {
-    throw new Error('No se pudo obtener los datos del servidor');
+  try {
+    const response = await fetch(url + category);
+    if (!response.ok) {
+      throw new Error('No se pudo obtener los datos del servidor');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error en menuesByCateogry:', error);
+    throw error;
   }
-  return await response.json();
 };
 
-
 export const getMenus = async () => {
-  const token = localStorage.getItem('token');
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    if (!response.ok) {
+      throw new Error('No se pudo obtener los datos del servidor');
     }
-  })
-  return response.json()
-}
+    return await response.json();
+  } catch (error) {
+    console.error('Error en getMenus:', error);
+    throw error;
+  }
+};

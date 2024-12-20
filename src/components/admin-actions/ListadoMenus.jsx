@@ -10,7 +10,7 @@ const ListadoMenus = ({ setBtnActive }) => {
   useEffect(() => {
     setBtnActive('Menus')
     getMenus()
-      .then(setMenus)
+      .then(data => setMenus(data))
       .catch(error => console.log(error))
   }, [])
 
