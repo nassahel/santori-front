@@ -41,6 +41,7 @@ const Login = () => {
             confirmButtonColor: "#2c4b45",
             showCloseButton: true
           })
+          setLoading(false)
         } else {
           const data = await response.json();
           console.log(data);
