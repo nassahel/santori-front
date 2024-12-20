@@ -11,7 +11,8 @@ import AlertModal from '../components/AlertModal'
 
 
 const Layout = () => {
-const [numPedidos, setNumPedidos] = useState(0)  
+    const [numPedidos, setNumPedidos] = useState(0)
+    const [alertModal, setAlertModal] = useState(false)
 
     return (
         <div className='min-h-screen flex flex-col'>
