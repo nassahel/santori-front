@@ -16,14 +16,14 @@ const CartIcon = () => {
   }, [numPedidos])
 
   return (
-    <div className='border-l text-white border-l-neutral-300 px-2 flex items-center justify-center h-8 hover:bg-orange-400 duration-200 relative'>
-     {
-      contador !== 0 && <span className='absolute top-0 text-xs bg-blue-600 rounded-full w-4 h-4 flex items-center justify-center right-0'>{contador}</span>
-     }
-      
-      <Link to="/orders" className=''><TiShoppingCart size='25' /></Link>
+    <Link to='/orders' className='text-white  px-2 flex items-center justify-center h-8 hover:bg-orange-400 duration-200 relative'>
+      {
+        contador !== 0 && <span className='absolute top-0 text-xs bg-blue-600 rounded-full w-4 h-4 flex items-center justify-center right-0'>{contador}</span>
+      }
 
-    </div>
+      <TiShoppingCart size='25' />
+
+    </Link>
   )
 }
 
