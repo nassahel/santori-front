@@ -17,7 +17,7 @@ const BuyModal = ({ modalAction, item, setNumPedidos }) => {
 
 
   const saveLocal = () => {
-    const { userId } = jwtDecode(localStorage.getItem('token'))
+    // const { userId } = jwtDecode(localStorage.getItem('token'))
     setTotal(cant * item.price)
 
     const itemPedido = {
@@ -30,7 +30,7 @@ const BuyModal = ({ modalAction, item, setNumPedidos }) => {
       const pedido = {
         productos: [],
         total: itemPedido.totalProducto,
-        clientId: userId
+        clientId: null
       };
       pedido.productos.push(itemPedido)
       localStorage.setItem('pedido', JSON.stringify(pedido))
