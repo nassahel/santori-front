@@ -7,9 +7,8 @@ import MostWanted from '../components/MostWanted';
 import banner from '/assets/img/banner1.png'
 import bannerRapi from '/assets/img/banner-rapi.jpg'
 import { useParams } from 'react-router-dom';
-import BuyModal from '../components/BuyModal';
+import BuyModal from '../components/modals/BuyModal';
 import CardSkeleton from '../components/CardSkeleton';
-import AlertModal from '../components/AlertModal';
 import { menuesByCateogry } from '../services/products.services';
 import { AppContext } from '../context/ContextProvider';
 
@@ -39,8 +38,6 @@ const Home = ({ setNumPedidos }) => {
 
 
   let filteredProducts = products.filter(item => item.name.toLowerCase().includes(search.trim().toLowerCase()))
-  console.log(filteredProducts);
-  console.log(search);
   
   
 

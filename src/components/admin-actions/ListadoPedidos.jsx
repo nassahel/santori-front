@@ -99,9 +99,6 @@ const ListadoPedidos = ({ setBtnActive }) => {
     }
   }
 
-  console.log(user);
-
-
 
   return (
     <section>

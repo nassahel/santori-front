@@ -7,7 +7,7 @@ import Orders from '../pages/Orders'
 import AboutUs from '../pages/AboutUs'
 import NavMovil from '../components/NavMovil'
 import Searcher from '../components/Searcher'
-import AlertModal from '../components/AlertModal'
+import AlertModal from '../components/modals/AlertModal'
 
 
 const Layout = () => {
