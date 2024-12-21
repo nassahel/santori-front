@@ -102,8 +102,11 @@ const ListadoPedidos = ({ setBtnActive }) => {
 
   return (
     <section>
-      <div className='flex justify-end'>
+      {/* <div className='flex justify-end'>
         <button className='bg-white py-2 px-4 my-2 rounded-md border-2 sticky top-10 border-neutral-400 hover:border-black duration-200'>Agregar Pedido</button>
+      </div> */}
+      <div>
+        <h2 className='text-center text-3xl  my-8'>Pedidos realizados</h2>
       </div>
       <div>
         {
@@ -113,7 +116,7 @@ const ListadoPedidos = ({ setBtnActive }) => {
                 pedidos.map((pedido, i) => (
                   <article key={i} className=''>
                     <div className=' flex rounded-sm py-1 border-b-2 bg-white'>
-                      <button onClick={() => expandOrder(i, pedido.clientId)} className='px-2 border-e'>
+                      <button onClick={() => expandOrder(i, pedido.clientId)} className='px-2 border-e hover:bg-neutral-200 duration-200'>
                         {detail === i ? <IoIosArrowUp /> : <IoIosArrowDown />}
 
                       </button>

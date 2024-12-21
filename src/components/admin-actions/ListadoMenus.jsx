@@ -19,10 +19,9 @@ const ListadoMenus = ({ setBtnActive }) => {
   }
 
 
-
   const deletePorduct = async (idProducto) => {
     Swal.fire({
-      title: "Realmente deseas borrar el pedido?",
+      title: "Realmente deseas borrar el producto?",
       showCancelButton: true,
       cancelButtonText: 'No',
       confirmButtonText: "Si",
@@ -30,35 +29,49 @@ const ListadoMenus = ({ setBtnActive }) => {
       if (result.isConfirmed) {
         try {
           const token = localStorage.getItem('token');
-          const url = `${import.meta.env.VITE_URL}products/`
+          const url = `${import.meta.env.VITE_URL}products/`;
           const response = await fetch(url + idProducto, {
             method: 'DELETE',
             headers: {
               'Authorization': `Bearer ${token}`,
               'Content-type': 'application/json'
             }
-          })
+          });
+
+          if (response.status === 403) {
+            const responseData = await response.json();
+            Swal.fire(responseData.message || "No se pudo eliminar el producto", "Solo el propietario puede elminiarlo. Puedes agregar un producto y luego eliminarlo", "error");
+            return;
+          }
 
           if (response.ok) {
             setMenus((prevMenus) => prevMenus.filter((menu) => menu._id !== idProducto));
+            Swal.fire("Producto eliminado", "", "success");
+          } else {
+            Swal.fire("No se pudo eliminar el producto", "", "error");
           }
+
         } catch (error) {
-          console.log('No se pudo eliminar el pedido', error);
+          console.log('No se pudo eliminar el producto', error);
+          Swal.fire("Hubo un error al intentar eliminar el producto", "", "error");
         }
-        Swal.fire("Producto eliminado", "", "success");
       } else if (result.isDenied) {
-        Swal.fire("No se pudo eliminar el Producto", "", "alert");
+        Swal.fire("No se pudo eliminar el producto", "", "alert");
       }
     });
-  }
+  };
+
 
 
   useEffect(() => {
-    setBtnActive('Menus')
+    setBtnActive('Menus');
     getMenus()
-      .then(data => setMenus(data))
-      .catch(error => console.log(error))
-  }, [modal])
+      .then(data => {
+        const sortedData = data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+        setMenus(sortedData);
+      })
+      .catch(error => console.log(error));
+  }, [modal]);
 
   const claseUlt = 'border h-full flex items-center justify-center w-1/3'
   return (

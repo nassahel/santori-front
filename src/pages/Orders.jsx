@@ -1,3 +1,4 @@
+import { jwtDecode } from 'jwt-decode';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -13,6 +14,25 @@ const Orders = ({ setNumPedidos }) => {
     if (!orden || !orden.productos || orden.productos.length === 0) {
       return Swal.fire("El carrito está vacío", "Agrega productos antes de confirmar el pedido", "warning");
     }
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return Swal.fire("Debes estar logueado para enviar la orden!", "", "info");
+    }
+
+    let userId;
+    try {
+      const decoded = jwtDecode(token);
+      userId = decoded.userId;
+    } catch (error) {
+      console.log(error);
+      return Swal.fire("Inicia sesión para enviar la orden", "", "warning");
+
+    }
+    const ordenLista = {
+      ...orden,
+      clientId: userId
+    }
+    if (ordenLista.clientId === null) return Swal.fire("Debes estar logueado para enviar la orden!", "", "info");
 
     Swal.fire({
       title: "¿Realizar pedido?",
@@ -23,14 +43,13 @@ const Orders = ({ setNumPedidos }) => {
       if (result.isConfirmed) {
         try {
           const url = `${import.meta.env.VITE_URL}orders`
-          const token = localStorage.getItem('token');
           const response = await fetch(url, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
               "Authorization": `Bearer ${token}`
             },
-            body: JSON.stringify(orden),
+            body: JSON.stringify(ordenLista),
           });
           if (!response.ok) {
             throw new Error("Error al procesar la orden");
@@ -59,7 +78,6 @@ const Orders = ({ setNumPedidos }) => {
   }, [])
 
 
-  console.log(orden);
 
 
 
@@ -76,7 +94,6 @@ const Orders = ({ setNumPedidos }) => {
     setNumPedidos(pedid.productos.length)
   }
 
-  console.log(orden);
 
 
   return (
