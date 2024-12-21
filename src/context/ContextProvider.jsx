@@ -9,6 +9,7 @@ const ContextProvider = ({ children }) => {
     order: null,
   });
   const [search, setSearch] = useState('')
+  const [numPedidos, setNumPedidos] = useState(0)
 
   useEffect(() => {
     getLoggedUserData()
@@ -30,7 +31,14 @@ const ContextProvider = ({ children }) => {
   }, [globalData]); // Este useEffect se ejecutará cada vez que se actualicen los datos en globalData
 
   return (
-    <AppContext.Provider value={{ globalData, setGlobalData, search, setSearch }}>
+    <AppContext.Provider value={{
+      globalData,
+      setGlobalData,
+      search,
+      setSearch,
+      numPedidos,
+      setNumPedidos
+    }}>
       {children}
     </AppContext.Provider>
   );

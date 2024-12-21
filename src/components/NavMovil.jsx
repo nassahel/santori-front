@@ -1,12 +1,35 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose, AiOutlineUser, AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import LogoTransparente from "/assets/img/logo-transparente.png"
 import { Link } from "react-router-dom";
 import CartIcon from "./CartIcon";
+import { AppContext } from "../context/ContextProvider";
+import Swal from "sweetalert2";
+import avatarDefault from '/assets/img/avatardefault.webp'
+
 
 const NavMovil = () => {
   const [sideBar, setSidebar] = useState(false)
+  const { globalData } = useContext(AppContext);
+
+
+  const closeSession = () => {
+    Swal.fire({
+      title: "¿Cerrar sesión?",
+      showCancelButton: true,
+      confirmButtonText: "Si",
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const isValidToken = localStorage.getItem('token')
+        if (isValidToken) {
+          localStorage.removeItem('token')
+        }
+        window.location.reload();
+      }
+    });
+  }
   return (
     <nav className='fixed w-full items-center h-14 shadow-md bg-orange-500 z-50 lg:hidden'>
       <div className="flex justify-between items-center pr-4">
@@ -25,10 +48,29 @@ const NavMovil = () => {
           <AiOutlineInfoCircle className="mr-2" />
           <p>Nosotros</p>
         </Link>
-        <Link onClick={() => setSidebar(false)} to='user/login' className='nav-btn'>
-          <AiOutlineUser className="mr-2" />
-          <p>Iniciar Sesión</p>
-        </Link>
+        {
+          globalData.loggedUser == undefined ?
+            <Link onClick={() => setSidebar(false)} to="/user/login" className='nav-btn'>
+              <AiOutlineUser className="mr-2" />
+              <p>Iniciar Sesión</p>
+            </Link>
+            :
+            <div className='relative'>
+              <button className=' nav-btn'>
+                <img src={globalData.loggedUser.userImage !== '' ? globalData.loggedUser.userImage : avatarDefault} alt="user image" className='w-8 mr-2' />
+                <p className='capitalize'>{globalData.loggedUser.name.split(' ')[0]}</p>
+              </button>
+             
+                {(globalData.loggedUser.rol === 'ADMIN' || globalData.loggedUser.rol === 'SUPERADMIN') && <Link to="/admin/pedidos" className='nav-btn-mini'>
+                 | Aministración
+                </Link>}
+                <button onClick={closeSession} className='nav-btn-mini bg-red-200'>
+                 | Cerrar Sesión
+                </button>
+            
+
+            </div>
+        }
       </div>
 
 

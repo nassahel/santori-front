@@ -3,12 +3,14 @@ import { AiOutlineClose } from "react-icons/ai";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import { AppContext } from '../../context/ContextProvider';
 
 
-const BuyModal = ({ modalAction, item, setNumPedidos }) => {
+const BuyModal = ({ modalAction, item }) => {
   const [cant, setCant] = useState(1)
   const [total, setTotal] = useState(null)
   const [coment, setComent] = useState('')
+  const { setNumPedidos } = useContext(AppContext)
 
   useEffect(() => {
     setTotal(cant * item.price)
