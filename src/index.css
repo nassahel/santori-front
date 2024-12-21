@@ -44,3 +44,7 @@ body {
 .nav-btn {
     @apply flex font-medium text-xl items-center justify-start text-black w-full  px-4 h-12 border-b border-neutral-300 lg:h-full text-center active:bg-amber-500/[.2]
 }
+
+.nav-btn-mini {
+    @apply flex font-medium  items-center justify-start text-black w-full  ps-20 h-10 border-b border-neutral-300 lg:h-full text-center active:bg-amber-500/[.2]
+}

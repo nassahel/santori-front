@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { TiShoppingCart } from "react-icons/ti";
 import { Link } from 'react-router-dom';
+import { AppContext } from '../context/ContextProvider';
 
 
-const CartIcon = ({ numPedidos }) => {
+const CartIcon = () => {
   const [contador, setContador] = useState(0)
+  const { numPedidos } = useContext(AppContext)
 
 
   useEffect(() => {

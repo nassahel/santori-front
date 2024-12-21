@@ -1,13 +1,15 @@
 import { jwtDecode } from 'jwt-decode';
-import React, { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AppContext } from '../context/ContextProvider';
 
 
-const Orders = ({ setNumPedidos }) => {
+const Orders = () => {
   const [orden, setOrden] = useState();
   const [envio, setEnvio] = useState(0)
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
+  const { setNumPedidos } = useContext(AppContext)
 
 
   const sendOrder = async () => {
@@ -77,22 +79,24 @@ const Orders = ({ setNumPedidos }) => {
     setearOrden()
   }, [])
 
+  const deleteItem = (id) => {
+    const pedido = JSON.parse(localStorage.getItem('pedido'));
+    if (!pedido) return;
 
+    const foundItem = pedido.productos.find(prod => prod._id === id);
+    if (!foundItem) return;
 
+    const updatedPedido = {
+      ...pedido,
+      productos: pedido.productos.filter(prod => prod._id !== id),
+      total: pedido.total - foundItem.totalProducto,
+    };
 
+    localStorage.setItem('pedido', JSON.stringify(updatedPedido));
+    setOrden(updatedPedido);
+    setNumPedidos(updatedPedido.productos.length);
+  };
 
-  const deleteItem = async (id) => {
-    let pedido = await JSON.parse(localStorage.getItem('pedido'))
-    let foundItem = pedido.productos.find(prod => prod._id == id)
-    pedido.total -= foundItem.totalProducto
-    let deletedItem = pedido.productos.filter(prod => prod._id !== id)
-    pedido.productos = deletedItem
-    console.log(pedido);
-    localStorage.setItem('pedido', JSON.stringify(pedido))
-    setOrden(pedido);
-    const pedid = JSON.parse(localStorage.getItem('pedido'))
-    setNumPedidos(pedid.productos.length)
-  }
 
 
 

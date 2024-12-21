@@ -8,9 +8,10 @@ import avatarDefault from '/assets/img/avatardefault.webp'
 import Swal from 'sweetalert2';
 import { AppContext } from '../context/ContextProvider';
 
-const Navbar = ({ numPedidos }) => {
+const Navbar = () => {
   const { globalData } = useContext(AppContext);
   const [endSessionBtn, setEndSessionBtn] = useState(false)
+  
 
 
   const closeSession = () => {
@@ -25,7 +26,6 @@ const Navbar = ({ numPedidos }) => {
         if (isValidToken) {
           localStorage.removeItem('token')
         }
-        Swal.fire("Saved!", "", "success");
         window.location.reload();
       }
     });
@@ -68,7 +68,7 @@ const Navbar = ({ numPedidos }) => {
 
         }
 
-        <CartIcon numPedidos={numPedidos} />
+        <CartIcon />
 
       </div>
     </div>
