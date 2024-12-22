@@ -5,6 +5,7 @@ import { CardComidas } from '../components/CardComidas';
 import Banner from '../components/Banner';
 import MostWanted from '../components/MostWanted';
 import banner from '/assets/img/banner1.png'
+import pedidosya from '/assets/img/banner_pedidosya.jpg'
 import bannerRapi from '/assets/img/banner-rapi.jpg'
 import { useParams } from 'react-router-dom';
 import BuyModal from '../components/modals/BuyModal';
@@ -38,8 +39,8 @@ const Home = ({ setNumPedidos }) => {
 
 
   let filteredProducts = products.filter(item => item.name.toLowerCase().includes(search.trim().toLowerCase()))
-  
-  
+
+
 
   return (
     <div className='relative px-2'>
@@ -55,22 +56,28 @@ const Home = ({ setNumPedidos }) => {
               )))
             }
           </div>
-        </div> 
-        :
-        <div>
-          <div className='flex flex-wrap xl:w-3/4 mx-auto lg:mt-10'>
-            {filteredProducts.length === 0 ? <div className='text-center flex items-center justify-center bg-neutral-200 rounded-md w-full h-[10rem]'> <p>No hay productos que coincidan</p></div> :
-              (filteredProducts.map((product, i) => (
-                <CardComidas action={() => openCloseModal(product)} key={i} product={product} />
-              )))
-            }
-          </div>
         </div>
+          :
+          <div>
+            <div className='flex flex-wrap xl:w-3/4 mx-auto lg:mt-10'>
+              {filteredProducts.length === 0 ? <div className='text-center flex items-center justify-center bg-neutral-200 rounded-md w-full h-[10rem]'> <p>No hay productos que coincidan</p></div> :
+                (filteredProducts.map((product, i) => (
+                  <CardComidas action={() => openCloseModal(product)} key={i} product={product} />
+                )))
+              }
+            </div>
+          </div>
       }
 
-      <Banner image={bannerRapi} />
+      <div className='lg:w-[75%] mx-auto px-2'>
+        <Banner image={bannerRapi} link='https://www.rappi.com.ar/' />
+      </div>
       <MostWanted />
-      <Banner image={banner} />
+      <div className='lg:w-[75%] mx-auto px-2'>
+        <Banner image={banner} />
+        <Banner image={pedidosya} link='https://www.pedidosya.com.ar/' />
+      </div>
+
     </div>
 
   )
