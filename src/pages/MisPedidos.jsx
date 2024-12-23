@@ -1,42 +1,45 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { AppContext } from '../context/ContextProvider'
-import { jwtDecode } from 'jwt-decode'
+import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../context/ContextProvider';
+import jwtDecode from 'jwt-decode'; // Quitar la importación por defecto innecesaria
 import { formatDate, sortData } from '../utils/utils';
 import Swal from 'sweetalert2';
 
-
 const MisPedidos = () => {
   const { userData } = useContext(AppContext);
-  const [orders, setOrders] = useState([])
-  const token = localStorage.getItem('token')
-  const { userId } = jwtDecode(token)
+  const [orders, setOrders] = useState([]);
+  const token = localStorage.getItem('token');
 
+  useEffect(() => {
+    if (token) {
+      const { userId } = jwtDecode(token);
+      getPedidos(userId);
+    } else {
+      Swal.fire('usuario no registrado!', '', 'alert');
+    }
+  }, [token]);
 
-
-
-
-  const getPedidos = async () => {
-    if (!token) return Swal.fire('usuario no registrado!', '', 'alert')
-    const url = `${import.meta.env.VITE_URL}orders/byUser/${userId}`
+  const getPedidos = async (userId) => {
+    const url = `${import.meta.env.VITE_URL}orders/byUser/${userId}`;
     try {
+      console.log('URL:', url);
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         }
-      })
-      const data = await response.json()
-      setOrders(sortData(data))
+      });
+      console.log('Response:', response);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setOrders(sortData(data));
     } catch (error) {
-      console.error(error)
-      Swal.fire('no se pudo obtener los pedidos!', error, 'alert')
+      console.error('Fetch error:', error);
+      Swal.fire('no se pudo obtener los pedidos!', error.message, 'alert');
     }
-  }
-
-  useEffect(() => {
-    getPedidos()
-  }, [])
+  };
 
   return (
     <section>
@@ -46,7 +49,7 @@ const MisPedidos = () => {
       <div className='w-11/12 lg:w-4/12 mx-auto'>
         {
           orders.length === 0 ?
-            <div>No tenes ordenes</div>
+            <div>No tienes órdenes</div>
             :
             orders.map((item, i) => (
               <div key={i} className='border shadow my-4 px-6 py-4 bg-white '>
@@ -84,7 +87,7 @@ const MisPedidos = () => {
       </div>
 
     </section>
-  )
-}
+  );
+};
 
-export default MisPedidos
+export default MisPedidos;
