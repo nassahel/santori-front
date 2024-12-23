@@ -10,7 +10,7 @@ export const getLoggedUserData = async () => {
         const decoded = jwtDecode(token);
         if (!decoded || !decoded.userId) {
             console.error('Token inválido o no contiene ID de usuario');
-            console.log(decoded);
+            // console.log(decoded);
             return null;
         }
 
