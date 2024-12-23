@@ -33,7 +33,7 @@ function AboutUs() {
       <div className='flex flex-col items-center  lg:w-3/5 text-lg mt-10'>
         {
           content.map((cont, i) => (
-            <div >
+            <div key={i} >
               <h2 className='text-red-600 font-semibold mb-3 text-2xl'>{cont.title}</h2>
               <p className='font-medium text-justify lg:text-center'>{cont.content}</p>
               <hr className='m-8 w-50 mx-auto' />

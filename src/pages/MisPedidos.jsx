@@ -36,8 +36,6 @@ const MisPedidos = () => {
     getPedidos()
   }, [])
 
-  console.log(orders);
-
   return (
     <section>
       <div className='py-10 text-center'>

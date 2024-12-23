@@ -10,8 +10,6 @@ const ContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
 
-  console.log(userData);
-  
 
   useEffect(() => {
     getLoggedUserData()
@@ -35,6 +33,7 @@ const ContextProvider = ({ children }) => {
       numPedidos,
       setNumPedidos,
       loading,
+      setLoading
     }}>
       {children}
     </AppContext.Provider>

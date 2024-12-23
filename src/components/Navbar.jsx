@@ -16,7 +16,6 @@ const Navbar = () => {
 
   const location = useLocation().pathname;
   const isHome = location === '/'
-  console.log(isHome);
 
 
 

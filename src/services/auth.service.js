@@ -4,7 +4,7 @@ export const getLoggedUserData = async () => {
     try {
         const token = localStorage.getItem('token');
         if (!token) {
-            console.error('No hay token en el localStorage');
+            // console.error('No hay token en el localStorage');
             return null;
         }
 
