@@ -19,10 +19,10 @@ const MisPedidos = () => {
   }, [token]);
 
   const getPedidos = async (userId) => {
-    const url = `${import.meta.env.VITE_URL}orders/byUser/${userId}`;
+    const url = `${import.meta.env.VITE_URL}orders/byUser/`
     try {
       console.log('URL:', url);
-      const response = await fetch(url, {
+      const response = await fetch(url + userId, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

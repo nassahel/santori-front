@@ -83,7 +83,7 @@ const Navbar = () => {
                     {(userData.rol === 'ADMIN' || userData.rol === 'SUPERADMIN') && <Link to="/admin/pedidos" className='p-2 border-b border-neutral-400 w-full hover:bg-neutral-200 duration-200'>
                       Aministración
                     </Link>}
-                    <Link to='/pedidos' className='p-2 border-b border-neutral-400 w-full hover:bg-neutral-200 duration-200'>
+                    <Link to='/pedidos' onClick={()=> setEndSessionBtn(false)} className='p-2 border-b border-neutral-400 w-full hover:bg-neutral-200 duration-200'>
                       Mis pedidos
                     </Link>
                     <button onClick={closeSession} className='p-2  w-full hover:bg-red-300 duration-200'>
