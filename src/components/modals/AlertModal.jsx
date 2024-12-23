@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { IoMdClose } from "react-icons/io";
 
 const AlertModal = ({ setAlertModal }) => {
-
-
-
 
     return (
         <div className='fixed  bg-black/80 z-40 h-full w-full flex items-center justify-center'>

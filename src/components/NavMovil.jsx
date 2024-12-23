@@ -2,7 +2,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose, AiOutlineUser, AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai";
 import { useContext, useState } from 'react';
 import LogoTransparente from "/assets/img/logo-transparente.png"
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CartIcon from "./CartIcon";
 import { AppContext } from "../context/ContextProvider";
 import Swal from "sweetalert2";

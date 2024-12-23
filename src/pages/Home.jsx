@@ -16,7 +16,7 @@ import { AppContext } from '../context/ContextProvider';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
   const [selectedProd, setSelectedProd] = useState(null);
   const { search } = useContext(AppContext);
@@ -40,22 +40,21 @@ const Home = () => {
 
   let filteredProducts = products.filter(item => item.name.toLowerCase().includes(search.trim().toLowerCase()))
 
-
-
   return (
     <div className='relative px-2'>
       {modal && <BuyModal modalAction={openCloseModal} item={selectedProd} />}
       <Categories />
       {
         search === '' ? <div>
-          {loading && <CardSkeleton />}
-          <div className='flex flex-wrap xl:w-3/4 mx-auto lg:mt-10'>
-            {products.length === 0 ? <div className='text-center flex items-center justify-center bg-neutral-200 rounded-md w-full h-[10rem]'> <p>No hay productos en esta categoria 😣</p></div> :
-              (products.map((product, i) => (
-                <CardComidas action={() => openCloseModal(product)} key={i} product={product} />
-              )))
-            }
-          </div>
+          {loading ? <CardSkeleton />
+            :
+            <div className='flex flex-wrap xl:w-3/4 mx-auto lg:mt-10'>
+              {products.length === 0 ? <div className='text-center flex items-center justify-center bg-neutral-200 rounded-md w-full h-[10rem]'> <p>No hay productos en esta categoria 😣</p></div> :
+                (products.map((product, i) => (
+                  <CardComidas action={() => openCloseModal(product)} key={i} product={product} />
+                )))
+              }
+            </div>}
         </div>
           :
           <div>

@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import Swal from 'sweetalert2'
 import bg from "/assets/img/bg-login.jpg"
 import Login from '../components/Login';
 import Register from '../components/Register';

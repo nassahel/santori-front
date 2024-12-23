@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CardSkeleton = ({ cantidad= 6 }) => {
+const CardSkeleton = ({ cantidad = 6 }) => {
 
   const tarjetas = Array.from({ length: cantidad }, (_, index) => (
     <section key={index} className='md:mx-auto lg:mx-0 w-full md:w-1/2 2xl:w-1/3 p-2'>
@@ -8,10 +8,10 @@ const CardSkeleton = ({ cantidad= 6 }) => {
         <div className="flex h-full w-full duration-300">
           <div className="w-4/6 h-full flex flex-col justify-between">
             <div className="flex flex-col justify-between">
-              <h5 className='font-semibold text-lg h-4 w-60 bg-neutral-300 mb-2 animate-pulse rounded'></h5>
-              <p className="text-sm h-2 w-60 bg-neutral-300 mb-2 animate-pulse rounded"></p>
-              <p className="text-sm h-2 w-60 bg-neutral-300 mb-2 animate-pulse rounded"></p>
-              <p className="text-sm h-2 w-60 bg-neutral-300 mb-2 animate-pulse rounded"></p>
+              <h5 className='font-semibold text-lg h-4 bg-neutral-300 mb-2 animate-pulse rounded'></h5>
+              <p className="text-sm h-2  bg-neutral-300 mb-2 animate-pulse rounded"></p>
+              <p className="text-sm h-2 bg-neutral-300 mb-2 animate-pulse rounded"></p>
+              <p className="text-sm h-2 bg-neutral-300 mb-2 animate-pulse rounded"></p>
             </div>
             <p className='font-bold text-lg h-6 w-14 bg-neutral-300 rounded'></p>
           </div>
@@ -22,7 +22,6 @@ const CardSkeleton = ({ cantidad= 6 }) => {
       </div>
     </section>
   ))
-
 
   return (
     <article className='flex flex-wrap xl:w-3/4 mx-auto mt-10'>

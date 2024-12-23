@@ -17,13 +17,18 @@ const Layout = () => {
 
     const location = useLocation().pathname;
     const isHome = location === '/'
+        || location === '/sandwichs'
+        || location === '/pastas'
+        || location === '/minutas'
+        || location === '/bebidas'
+        || location === '/pizzas'
 
     return (
         <div className='min-h-screen flex flex-col'>
             {alertModal && <AlertModal setAlertModal={setAlertModal} />}
             <Navbar />
             <NavMovil />
-            <div className='pt-16 h-full'>
+            <div className='pt-16 lg:pt-0 h-full'>
                 {
                     isHome && <div className={`justify-center flex-grow`}>
                         <Searcher type='2' />

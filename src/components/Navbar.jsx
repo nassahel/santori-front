@@ -16,6 +16,11 @@ const Navbar = () => {
 
   const location = useLocation().pathname;
   const isHome = location === '/'
+    || location === '/sandwichs'
+    || location === '/pastas'
+    || location === '/minutas'
+    || location === '/bebidas'
+    || location === '/pizzas'
 
 
 
@@ -61,7 +66,6 @@ const Navbar = () => {
           <Searcher type='1' />
         </div>
       }
-
       <div className='flex xl:w-1/5 items-center justify-end'>
         <Link className='border-b-2 border-transparent hover:border-white duration-300 px-2' to="/">Inicio</Link>
         <Link className='border-b-2 border-transparent hover:border-white duration-300 px-2' to="about">Nosotros</Link>
@@ -83,7 +87,7 @@ const Navbar = () => {
                     {(userData.rol === 'ADMIN' || userData.rol === 'SUPERADMIN') && <Link to="/admin/pedidos" className='p-2 border-b border-neutral-400 w-full hover:bg-neutral-200 duration-200'>
                       Aministración
                     </Link>}
-                    <Link to='/pedidos' onClick={()=> setEndSessionBtn(false)} className='p-2 border-b border-neutral-400 w-full hover:bg-neutral-200 duration-200'>
+                    <Link to='/pedidos' onClick={() => setEndSessionBtn(false)} className='p-2 border-b border-neutral-400 w-full hover:bg-neutral-200 duration-200'>
                       Mis pedidos
                     </Link>
                     <button onClick={closeSession} className='p-2  w-full hover:bg-red-300 duration-200'>
@@ -94,10 +98,7 @@ const Navbar = () => {
               </div>
           }
         </div>
-
-
         <CartIcon />
-
       </div>
     </div>
   )

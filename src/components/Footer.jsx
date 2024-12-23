@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { BsInstagram,  BsWhatsapp  } from "react-icons/bs";
+import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 import { LiaFacebook } from "react-icons/lia";
 
 function Footer() {
@@ -16,7 +16,7 @@ function Footer() {
         <div className="direction">Av. Nombre nombre 123</div>
       </div>
       <div className="text-center lg:w-1/3 w-full  ">
-        <Link to='/' className=""> 
+        <Link to='/' className="">
           <div className="text-lg">Santori Delivery</div>
         </Link>
         <div className="">© Todos los derechos reservados</div>

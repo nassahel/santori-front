@@ -11,14 +11,11 @@ const AddEditProductModal = ({ setModal, productEdit, modalEdit, setModalEdit })
     const [precioOferta, setPrecioOferta] = useState(modalEdit ? productEdit.offerPrice : 0)
 
     const createProduct = async () => {
-
         if (nombre === ''
             || descripcion === ''
             || imagen === ''
             || categoria === '')
             return Swal.fire('Todos los campos deben estar completos', '', 'info')
-
-
 
         const url = modalEdit
             ? `${import.meta.env.VITE_URL}products/${productEdit._id}`
@@ -89,11 +86,11 @@ const AddEditProductModal = ({ setModal, productEdit, modalEdit, setModalEdit })
                         <label className='cursor-pointer' htmlFor="oferta">En oferta</label>
                     </div>
                     <input value={precioOferta} onChange={(e) => setPrecioOferta(e.target.value)} disabled={!oferta} className={inputStyle} type="number" name="precio-oferta" placeholder='Precio de oferta' />
-                   <div className='flex gap-4'>
-                    <button onClick={createProduct} className='bg-neutral-800 mt-auto rounded-sm w-[8rem] mx-auto py-1 text-white hover:bg-neutral-700 duration-200'>{modalEdit ? 'Confirmar' : 'Guardar'}</button>
-                    <button onClick={closeModal} className='bg-neutral-600 mt-auto rounded-sm w-[8rem] mx-auto py-1 text-white hover:bg-neutral-500 duration-200'>Cancelar</button>
-                   </div>
-                    
+                    <div className='flex gap-4'>
+                        <button onClick={createProduct} className='bg-neutral-800 mt-auto rounded-sm w-[8rem] mx-auto py-1 text-white hover:bg-neutral-700 duration-200'>{modalEdit ? 'Confirmar' : 'Guardar'}</button>
+                        <button onClick={closeModal} className='bg-neutral-600 mt-auto rounded-sm w-[8rem] mx-auto py-1 text-white hover:bg-neutral-500 duration-200'>Cancelar</button>
+                    </div>
+
                 </div>
             </article>
         </section>

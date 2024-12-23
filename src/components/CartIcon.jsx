@@ -11,7 +11,6 @@ const CartIcon = () => {
 
   useEffect(() => {
     const pedid = JSON.parse(localStorage.getItem('pedido'))
-
     pedid && setContador(pedid.productos.length)
   }, [numPedidos])
 
@@ -20,9 +19,7 @@ const CartIcon = () => {
       {
         contador !== 0 && <span className='absolute top-0 text-xs bg-blue-600 rounded-full w-4 h-4 flex items-center justify-center right-0'>{contador}</span>
       }
-
       <TiShoppingCart size='25' />
-
     </Link>
   )
 }

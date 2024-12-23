@@ -9,7 +9,6 @@ import tagOferta from '/assets/img/oferta.webp'
 const Orders = () => {
   const [orden, setOrden] = useState();
   const [envio, setEnvio] = useState(0)
-  // const [modal, setModal] = useState(false);
   const { setNumPedidos } = useContext(AppContext)
 
 
@@ -97,9 +96,6 @@ const Orders = () => {
     setOrden(updatedPedido);
     setNumPedidos(updatedPedido.productos.length);
   };
-
-
-
 
   return (
     <div className='w-full max-w-[80rem] mx-auto lg:flex py-6  '>

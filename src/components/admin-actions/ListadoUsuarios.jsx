@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllUsers } from '../../services/users.services';
-import { FaRegTrashAlt, FaRegEdit } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from 'sweetalert2';
 
 const ListadoUsuarios = ({ setBtnActive }) => {
@@ -76,7 +76,6 @@ const ListadoUsuarios = ({ setBtnActive }) => {
           <p className='w-1/4 border px-2 py-1'>Nombre</p>
           <p className='w-1/4 border px-2 py-1'>Email</p>
           <p className='w-1/4 border px-2 py-1'>Direccion</p>
-          {/* <p className='border bg-neutral-900 text-white px-2 py-1'><FaRegEdit /></p> */}
           <p className='bg-red-600 text-white border px-2 py-1'><FaRegTrashAlt /></p>
         </div>
 

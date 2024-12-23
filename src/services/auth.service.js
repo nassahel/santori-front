@@ -4,14 +4,13 @@ export const getLoggedUserData = async () => {
     try {
         const token = localStorage.getItem('token');
         if (!token) {
-            // console.error('No hay token en el localStorage');
             return null;
         }
 
         const decoded = jwtDecode(token);
         if (!decoded || !decoded.userId) {
             console.error('Token inválido o no contiene ID de usuario');
-            console.log(decoded);            
+            console.log(decoded);
             return null;
         }
 
@@ -30,7 +29,7 @@ export const getLoggedUserData = async () => {
             return null;
         }
 
-        const data = await response.json();        
+        const data = await response.json();
         return data;
     } catch (error) {
         console.error('Error en getLoggedUserData:', error.message);

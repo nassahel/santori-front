@@ -1,7 +1,6 @@
 import React from 'react'
 import Burg from "/assets/img/most-burger.png"
 import Pizz from "/assets/img/most-pizza.png"
-// import Sushi from "/assets/img/most-sushi.png"
 import Pasta from "/assets/img/fideos.webp"
 import { Link } from 'react-router-dom'
 
