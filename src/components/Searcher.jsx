@@ -5,6 +5,7 @@ import { AppContext } from '../context/ContextProvider';
 const Searcher = ({ type }) => {
   const { setSearch } = useContext(AppContext);
   
+  
 
   return (
     <>
@@ -14,7 +15,7 @@ const Searcher = ({ type }) => {
         </div>
       ) :
         (
-          <div className='mt-14 p-2 lg:hidden'>
+          <div className='p-2 lg:hidden'>
               <input onChange={(e) => setSearch(e.target.value)} type="search" name="" id="" placeholder='Buscar comidas...' className='hover:outline-none rounded-md bg-white px-3 w-full  h-10 py-1 focus:outline-none ' />   
           </div>
         )}
