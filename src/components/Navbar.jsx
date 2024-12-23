@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { AiOutlineUser } from "react-icons/ai";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import LogoTransparente from "/assets/img/logo-transparente.png"
 import Searcher from './Searcher';
 import CartIcon from './CartIcon';
@@ -13,7 +13,10 @@ const Navbar = () => {
   const [endSessionBtn, setEndSessionBtn] = useState(false)
   const dropdownRef = useRef(null);
 
-  
+
+  const location = useLocation().pathname;
+  const isHome = location === '/'
+  console.log(isHome);
 
 
 
@@ -54,10 +57,13 @@ const Navbar = () => {
       <Link to="/" className='text-2xl xl:w-1/5'>
         <img src={LogoTransparente} alt="" className='h-16' />
       </Link>
-      <div className='flex justify-center flex-grow max-w-[60rem] '>
-        <Searcher type='1' />
-      </div>
-      <div className='flex  items-center justify-end'>
+      {
+        isHome && <div className={`justify-center flex-grow`}>
+          <Searcher type='1' />
+        </div>
+      }
+
+      <div className='flex xl:w-1/5 items-center justify-end'>
         <Link className='border-b-2 border-transparent hover:border-white duration-300 px-2' to="/">Inicio</Link>
         <Link className='border-b-2 border-transparent hover:border-white duration-300 px-2' to="about">Nosotros</Link>
         <div className='border-x border-neutral-300 mx-2 px-1'>

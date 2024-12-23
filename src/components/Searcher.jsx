@@ -9,7 +9,7 @@ const Searcher = ({ type }) => {
   return (
     <>
       {type === '1' ? (
-        <div className='bg-white w-full rounded hidden lg:flex text-black justify-between overflow-hidden pl-3 pr-2 items-center'>
+        <div className='bg-white max-w-[60rem] mx-auto rounded hidden lg:flex text-black justify-between overflow-hidden px-5 items-center'>
           <input  onChange={(e) => setSearch(e.target.value)} type="search" name="" id="" placeholder='Buscar comidas...' className='hover:outline-none w-full mr-6 h-12 py-1 focus:outline-none ' />
         </div>
       ) :
