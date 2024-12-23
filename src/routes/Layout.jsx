@@ -9,6 +9,7 @@ import NavMovil from '../components/NavMovil'
 import Searcher from '../components/Searcher'
 import AlertModal from '../components/modals/AlertModal'
 import MisPedidos from '../pages/MisPedidos'
+import ProtectedLoginRoutes from './ProtectedLoginRoutes'
 
 
 const Layout = () => {
@@ -24,8 +25,11 @@ const Layout = () => {
                 <Route path='/:category?/' element={<Home />} />
                 <Route path='/orders' element={<Orders />} />
                 <Route path='/about' element={<AboutUs />} />
-                <Route path='/pedidos' element={<MisPedidos />} />
-
+                <Route path='/pedidos' element={
+                    <ProtectedLoginRoutes>
+                        <MisPedidos />
+                    </ProtectedLoginRoutes>
+                } />
             </Routes>
             <Footer />
         </div>

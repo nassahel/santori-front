@@ -37,7 +37,6 @@ const BuyModal = ({ modalAction, item }) => {
     } else {
       const pedido = JSON.parse(localStorage.getItem('pedido'))
       const itemFound = pedido.productos.find(objeto => objeto.name === item.name);
-      console.log('producto', itemFound);
       if (itemFound) {
         itemFound.quantity += cant;
         console.log('pedido actualizado', pedido);
