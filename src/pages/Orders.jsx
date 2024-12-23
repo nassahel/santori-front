@@ -108,11 +108,11 @@ const Orders = () => {
           {orden == null || orden.productos.length === 0 ? <div className='  border-2 w-full h-[15.5rem] flex items-center text-neutral-700 italic justify-center'><p>No tenés ningun producto en el carrito</p></div>
             :
             (orden.productos.map((prod, i) => (
-              <div key={i} className='bg-white border h-[8rem] flex rounded-md p-4' >
-                <div className='w-2/12 overflow-hidden'>
+              <div key={i} className='bg-white border h-[8rem] flex justify-between rounded-md p-4' >
+                <div className='w-2/12 overflow-hidden hidden md:inline'>
                   <img src={prod.productImage} alt="" className='h-full w-full object-cover rounded-sm' />
                 </div>
-                <div className='w-9/12 ml-6 flex flex-col justify-between'>
+                <div className='w-full md:w-9/12 md:ml-6 flex flex-col justify-between'>
                   <div className='flex w-full justify-between'>
                     <div className='flex gap-2 items-center'>
                       <p className='font-semibold'>{prod.name} (${prod.isOffer ? prod.offerPrice : prod.price} c/u) </p>
