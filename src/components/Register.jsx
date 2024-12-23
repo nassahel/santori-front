@@ -35,7 +35,7 @@ function Register() {
         body: JSON.stringify({ name, email, direction, password }),
       });
 
-      console.log(response);
+      // console.log(response);
 
 
       if (!response.ok) {

@@ -21,7 +21,7 @@ const MisPedidos = () => {
   const getPedidos = async (userId) => {
     const url = `${import.meta.env.VITE_URL}orders/byUser/`
     try {
-      console.log('URL:', url);
+      // console.log('URL:', url);
       const response = await fetch(url + userId, {
         method: 'GET',
         headers: {

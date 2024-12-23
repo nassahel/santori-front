@@ -44,7 +44,7 @@ const Login = () => {
           setLoading(false)
         } else {
           const data = await response.json();
-          console.log(data);
+          // console.log(data);
 
           const token = data.token;
           localStorage.setItem('token', token);
