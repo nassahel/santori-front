@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/ContextProvider';
-import jwtDecode from 'jwt-decode'; // Quitar la importación por defecto innecesaria
+import { jwtDecode } from 'jwt-decode';
 import { formatDate, sortData } from '../utils/utils';
 import Swal from 'sweetalert2';
 
