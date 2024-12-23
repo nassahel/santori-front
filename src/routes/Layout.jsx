@@ -23,7 +23,7 @@ const Layout = () => {
             {alertModal && <AlertModal setAlertModal={setAlertModal} />}
             <Navbar />
             <NavMovil />
-            <div className='pt-16'>
+            <div className='pt-16 h-full'>
                 {
                     isHome && <div className={`justify-center flex-grow`}>
                         <Searcher type='2' />
