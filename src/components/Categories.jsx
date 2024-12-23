@@ -4,8 +4,6 @@ import pizzas from "/assets/img/pizza.png"
 import carne from "/assets/img/meat.png"
 import pasta from "/assets/img/pasta.png"
 import bebida from "/assets/img/drink.png"
-import oferta from "/assets/img/oferta.png"
-
 
 const Categories = () => {
 
@@ -14,33 +12,12 @@ const Categories = () => {
 
   const movil = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-
   const categories = [
-    {
-      title: "Sandwichs",
-      link: "sandwichs",
-      img: entradas,
-    },
-    {
-      title: "Pizzas",
-      link: "pizzas",
-      img: pizzas,
-    },
-    {
-      title: "Minutas",
-      link: "minutas",
-      img: carne,
-    },
-    {
-      title: "Pastas",
-      link: "pastas",
-      img: pasta,
-    },
-    {
-      title: "Bebidas",
-      link: "bebidas",
-      img: bebida,
-    },
+    { title: "Sandwichs", link: "sandwichs", img: entradas, },
+    { title: "Pizzas", link: "pizzas", img: pizzas, },
+    { title: "Minutas", link: "minutas", img: carne, },
+    { title: "Pastas", link: "pastas", img: pasta, },
+    { title: "Bebidas", link: "bebidas", img: bebida, },
   ]
 
   return (

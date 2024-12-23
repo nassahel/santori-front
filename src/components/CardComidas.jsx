@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import stars from "/assets/img/stars.gif"
 
 export const CardComidas = ({ product, action }) => {
 
@@ -9,8 +8,8 @@ export const CardComidas = ({ product, action }) => {
         <div className="flex h-full w-full  duration-300">
           <div className=" w-7/12 h-full flex flex-col justify-between">
             <div className="flex flex-col justify-between">
-              <h5 className='font-semibold text-lg'>{product.name}</h5>
-              <p className="text-sm">{product.description}</p>
+              <h5 className='font-semibold text-lg leading-4'>{product.name}</h5>
+              <p className="text-sm leading-4 mt-1 lg:mt-3">{product.description}</p>
             </div>
             {!product.isOffer && <p className='font-bold text-xl'>${product.price}</p>}
           </div>

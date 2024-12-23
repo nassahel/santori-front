@@ -1,6 +1,5 @@
 const url = `${import.meta.env.VITE_URL}users/`
 
-
 export const getAllUsers = async () => {
   const token = localStorage.getItem('token');
   const users = await fetch(url, {
@@ -12,9 +11,6 @@ export const getAllUsers = async () => {
   })
   return users.json()
 }
-
-
-
 
 export const getUserById = async (id) => {
   try {

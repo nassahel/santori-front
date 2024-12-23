@@ -20,7 +20,6 @@ const ListadoMenus = ({ setBtnActive }) => {
     setModalEdit(true)
   }
 
-
   const deletePorduct = async (idProducto) => {
     Swal.fire({
       title: "Realmente deseas borrar el producto?",
@@ -70,8 +69,6 @@ const ListadoMenus = ({ setBtnActive }) => {
     setBtnActive('Menus');
     getMenus()
       .then(data => {
-        // const sortedData = data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-        // setMenus(sortedData);
         setMenus(sortData(data));
       })
       .catch(error => console.log(error));

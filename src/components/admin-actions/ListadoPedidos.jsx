@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from 'sweetalert2';
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
@@ -12,7 +11,6 @@ const ListadoPedidos = ({ setBtnActive }) => {
   const [user, setUser] = useState(null);
 
   let token = localStorage.getItem('token');
-
 
   const deleteOrder = async (idPedido) => {
     Swal.fire({
@@ -31,7 +29,6 @@ const ListadoPedidos = ({ setBtnActive }) => {
               'Content-type': 'application/json'
             }
           })
-
           if (response.ok) {
             setPedidos((prevPedidos) => prevPedidos.filter((pedido) => pedido._id !== idPedido));
           }
@@ -79,13 +76,10 @@ const ListadoPedidos = ({ setBtnActive }) => {
     }
   }
 
-
   useEffect(() => {
     setBtnActive('Pedidos')
     getPedidos()
   }, [])
-
-
 
   const expandOrder = (i, userId) => {
     if (detail === null) {
@@ -102,9 +96,6 @@ const ListadoPedidos = ({ setBtnActive }) => {
 
   return (
     <section>
-      {/* <div className='flex justify-end'>
-        <button className='bg-white py-2 px-4 my-2 rounded-md border-2 sticky top-10 border-neutral-400 hover:border-black duration-200'>Agregar Pedido</button>
-      </div> */}
       <div>
         <h2 className='text-center text-3xl  my-8'>Pedidos realizados</h2>
       </div>

@@ -36,7 +36,7 @@ function Register() {
       });
 
       console.log(response);
-      
+
 
       if (!response.ok) {
         console.error('Error en el registro:', response.statusText);
