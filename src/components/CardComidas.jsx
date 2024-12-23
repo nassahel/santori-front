@@ -28,10 +28,7 @@ export const CardComidas = ({ product, action }) => {
             <p className="text-xl font-semibold">${product.offerPrice}</p>
           </div>
         }
-
       </div>
-
-
     </Link>
   )
 }

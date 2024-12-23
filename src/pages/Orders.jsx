@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AppContext } from '../context/ContextProvider';
+import tagOferta from '/assets/img/oferta.webp'
 
 
 const Orders = () => {
@@ -113,7 +114,10 @@ const Orders = () => {
                 </div>
                 <div className='w-9/12 ml-6 flex flex-col justify-between'>
                   <div className='flex w-full justify-between'>
-                    <p className='font-semibold'>{prod.name} (${prod.price} c/u) </p>
+                    <div className='flex gap-2 items-center'>
+                      <p className='font-semibold'>{prod.name} (${prod.isOffer ? prod.offerPrice : prod.price} c/u) </p>
+                      {prod.isOffer && <img src={tagOferta} alt="tag oferta" className='w-16' />}
+                    </div>
                     <p className='text-xl'>${prod.totalProducto}</p>
                   </div>
                   <div className='flex justify-between'>

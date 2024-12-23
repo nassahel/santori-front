@@ -1,18 +1,24 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../context/ContextProvider'
+import React, { useContext } from 'react';
+import { AppContext } from '../context/ContextProvider';
 import { Navigate } from 'react-router-dom';
 
 const ProtectedRoutes = ({ children }) => {
-  const { globalData } = useContext(AppContext);
+  const { userData, loading } = useContext(AppContext);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  if (!globalData?.loggedUser) {
+  if (!userData) {
     return <Navigate to="/" />;
   }
 
-  const allowedRoles = ['ADMIN', 'SUPERADMIN']
-  if (allowedRoles.includes(globalData.loggedUser.rol)) return children
-  return <Navigate to="/" />
-}
+  const allowedRoles = ['ADMIN', 'SUPERADMIN'];
+  if (allowedRoles.includes(userData.rol)) {
+    return children;
+  }
 
-export default ProtectedRoutes
+  return <Navigate to="/" />;
+};
+
+export default ProtectedRoutes;

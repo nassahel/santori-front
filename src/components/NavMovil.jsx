@@ -11,7 +11,7 @@ import avatarDefault from '/assets/img/avatardefault.webp'
 
 const NavMovil = () => {
   const [sideBar, setSidebar] = useState(false)
-  const { globalData } = useContext(AppContext);
+  const { userData } = useContext(AppContext);
 
 
   const closeSession = () => {
@@ -49,7 +49,7 @@ const NavMovil = () => {
           <p>Nosotros</p>
         </Link>
         {
-          globalData.loggedUser == undefined ?
+          userData == undefined ?
             <Link onClick={() => setSidebar(false)} to="/user/login" className='nav-btn'>
               <AiOutlineUser className="mr-2" />
               <p>Iniciar Sesión</p>
@@ -57,13 +57,16 @@ const NavMovil = () => {
             :
             <div className='relative'>
               <button className=' nav-btn'>
-                <img src={globalData.loggedUser.userImage !== '' ? globalData.loggedUser.userImage : avatarDefault} alt="user image" className='w-8 mr-2' />
-                <p className='capitalize'>{globalData.loggedUser.name.split(' ')[0]}</p>
+                <img src={userData.userImage !== '' ? userData.userImage : avatarDefault} alt="user image" className='w-8 mr-2' />
+                <p className='capitalize'>{userData.name.split(' ')[0]}</p>
               </button>
              
-                {(globalData.loggedUser.rol === 'ADMIN' || globalData.loggedUser.rol === 'SUPERADMIN') && <Link to="/admin/pedidos" className='nav-btn-mini'>
+                {(userData.rol === 'ADMIN' || userData.rol === 'SUPERADMIN') && <Link to="/admin/pedidos" className='nav-btn-mini'>
                  | Aministración
                 </Link>}
+                <Link onClick={() => setSidebar(false)} to='/pedidos' className='nav-btn-mini'>
+                 | Mis pedidos
+                </Link>
                 <button onClick={closeSession} className='nav-btn-mini bg-red-200'>
                  | Cerrar Sesión
                 </button>
