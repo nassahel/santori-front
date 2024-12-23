@@ -39,8 +39,8 @@ const Layout = () => {
                         </ProtectedLoginRoutes>
                     } />
                 </Routes>
-                <Footer />
             </div>
+            <Footer />
 
         </div>
     )
