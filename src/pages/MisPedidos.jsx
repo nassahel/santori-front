@@ -34,6 +34,7 @@ const MisPedidos = () => {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
+      
       setOrders(sortData(data));
     } catch (error) {
       // console.error('Fetch error:', error);

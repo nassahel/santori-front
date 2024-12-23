@@ -66,7 +66,7 @@ const Navbar = () => {
           <Searcher type='1' />
         </div>
       }
-      <div className='flex xl:w-1/5 items-center justify-end'>
+      <div className='flex 2xl:w-1/5 items-center justify-end'>
         <Link className='border-b-2 border-transparent hover:border-white duration-300 px-2' to="/">Inicio</Link>
         <Link className='border-b-2 border-transparent hover:border-white duration-300 px-2' to="about">Nosotros</Link>
         <div className='border-x border-neutral-300 mx-2 px-1'>
