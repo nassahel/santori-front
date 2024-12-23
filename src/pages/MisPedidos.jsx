@@ -30,7 +30,7 @@ const MisPedidos = () => {
       setOrders(sortData(data))
     } catch (error) {
       console.error(error)
-      Swal.fire('no se pudo obtener los pedidos!', '', 'alert')
+      Swal.fire('no se pudo obtener los pedidos!', error, 'alert')
     }
   }
 
