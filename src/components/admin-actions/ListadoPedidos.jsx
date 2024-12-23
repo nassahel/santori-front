@@ -3,8 +3,8 @@ import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from 'sweetalert2';
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { format } from 'date-fns';
 import { getUserById } from '../../services/users.services';
+import { formatDate } from '../../utils/utils';
 
 const ListadoPedidos = ({ setBtnActive }) => {
   const [pedidos, setPedidos] = useState(null)
@@ -120,8 +120,8 @@ const ListadoPedidos = ({ setBtnActive }) => {
                         {detail === i ? <IoIosArrowUp /> : <IoIosArrowDown />}
 
                       </button>
-                      <p className='px-3 border-r-2 w-[15rem] text-center'>{pedido.clientId}</p>
-                      <p className='px-3 border-r-2 w-[17rem] text-center'> <span className='text-neutral-600 italic me-2 text-sm'>Fecha:</span>  {format(pedido.createdAt, 'dd/MM/yyyy HH:mm:ss')}</p>
+                      <p className='px-3 border-r-2 w-[10rem] text-center'><span className='text-neutral-600 italic me-2 text-sm'>Cliente:</span>{pedido.clientId.split('', 7)}</p>
+                      <p className='px-3 border-r-2 w-[17rem] text-center'> <span className='text-neutral-600 italic me-2 text-sm'>Fecha:</span>  {formatDate(pedido.createdAt)}</p>
                       <p className='px-3 border-r-2 w-[10rem] text-center'> <span className='text-neutral-600 italic me-2 text-sm'>Total:</span>  ${pedido.total}</p>
 
                       <div className=' flex items-center border-l-2 px-3 justify-around ms-auto gap-4'>

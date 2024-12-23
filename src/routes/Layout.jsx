@@ -8,22 +8,24 @@ import AboutUs from '../pages/AboutUs'
 import NavMovil from '../components/NavMovil'
 import Searcher from '../components/Searcher'
 import AlertModal from '../components/modals/AlertModal'
+import MisPedidos from '../pages/MisPedidos'
 
 
 const Layout = () => {
-    const [numPedidos, setNumPedidos] = useState(0)
     const [alertModal, setAlertModal] = useState(false)
 
     return (
         <div className='min-h-screen flex flex-col'>
             {alertModal && <AlertModal setAlertModal={setAlertModal} />}
-            <Navbar numPedidos={numPedidos} />
+            <Navbar />
             <NavMovil />
             <Searcher />
             <Routes>
-                <Route path='/:category?/' element={<Home setNumPedidos={setNumPedidos} />} />
-                <Route path='/orders' element={<Orders setNumPedidos={setNumPedidos} />} />
+                <Route path='/:category?/' element={<Home />} />
+                <Route path='/orders' element={<Orders />} />
                 <Route path='/about' element={<AboutUs />} />
+                <Route path='/pedidos' element={<MisPedidos />} />
+
             </Routes>
             <Footer />
         </div>

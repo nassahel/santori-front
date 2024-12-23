@@ -4,13 +4,15 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { getMenus } from '../../services/products.services';
 import AddEditProductModal from '../modals/AddEditProductModal';
 import Swal from 'sweetalert2';
+import { sortData } from '../../utils/utils';
 
 
 const ListadoMenus = ({ setBtnActive }) => {
-  const [menus, setMenus] = useState(null)
+  const [menus, setMenus] = useState([])
   const [modal, setModal] = useState(false);
   const [productEdit, setProductEdit] = useState(null)
   const [modalEdit, setModalEdit] = useState(false)
+  const [search, setSearch] = useState('')
 
   const editProduct = (prod) => {
     setProductEdit(prod)
@@ -61,14 +63,16 @@ const ListadoMenus = ({ setBtnActive }) => {
     });
   };
 
-
+  let filtered = menus.filter(item => item.name.toLowerCase().trim().includes(search.toLowerCase().trim()) || item.description.toLowerCase().trim().includes(search.toLowerCase().trim()));
+  const resultMenus = search === '' ? menus : filtered;
 
   useEffect(() => {
     setBtnActive('Menus');
     getMenus()
       .then(data => {
-        const sortedData = data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-        setMenus(sortedData);
+        // const sortedData = data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+        // setMenus(sortedData);
+        setMenus(sortData(data));
       })
       .catch(error => console.log(error));
   }, [modal]);
@@ -77,7 +81,8 @@ const ListadoMenus = ({ setBtnActive }) => {
   return (
     <section className='relative'>
       {modal && <AddEditProductModal setModal={setModal} modalEdit={modalEdit} setModalEdit={setModalEdit} productEdit={productEdit} />}
-      <div className='flex justify-end'>
+      <div className='flex justify-between'>
+        <input value={search} onChange={(e) => setSearch(e.target.value)} className='bg-white py-2 px-4 my-2  rounded-md border-2 border-neutral-400 outline-none w-[25rem]' type="search" name="searchProd" placeholder='Buscar productos...' />
         <button onClick={() => setModal(true)} className='bg-white py-2 px-4 my-2  rounded-md border-2 border-neutral-400 hover:border-black duration-200'>Agregar Producto</button>
       </div>
       <div>
@@ -105,7 +110,7 @@ const ListadoMenus = ({ setBtnActive }) => {
                 </div>
               </article>
               {
-                menus.map((menu, i) => (
+                resultMenus.map((menu, i) => (
                   <article key={i} className='bg-white flex rounded-sm'>
                     <div className='h-28 w-28 overflow-hidden'>
                       <img src={menu.productImage} alt={menu.name} className='h-full object-cover' />

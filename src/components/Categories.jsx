@@ -4,6 +4,7 @@ import pizzas from "/assets/img/pizza.png"
 import carne from "/assets/img/meat.png"
 import pasta from "/assets/img/pasta.png"
 import bebida from "/assets/img/drink.png"
+import oferta from "/assets/img/oferta.png"
 
 
 const Categories = () => {

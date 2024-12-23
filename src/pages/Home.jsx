@@ -14,7 +14,7 @@ import { menuesByCateogry } from '../services/products.services';
 import { AppContext } from '../context/ContextProvider';
 
 
-const Home = ({ setNumPedidos }) => {
+const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState(false);
@@ -44,7 +44,7 @@ const Home = ({ setNumPedidos }) => {
 
   return (
     <div className='relative px-2'>
-      {modal && <BuyModal modalAction={openCloseModal} item={selectedProd} setNumPedidos={setNumPedidos} />}
+      {modal && <BuyModal modalAction={openCloseModal} item={selectedProd} />}
       <Categories />
       {
         search === '' ? <div>

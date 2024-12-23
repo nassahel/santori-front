@@ -13,14 +13,12 @@ const BuyModal = ({ modalAction, item }) => {
   const { setNumPedidos } = useContext(AppContext)
 
   useEffect(() => {
-    setTotal(cant * item.price)
+    setTotal(item.isOffer ? cant * item.offerPrice : cant * item.price)
   }, [cant])
 
 
-
   const saveLocal = () => {
-    // const { userId } = jwtDecode(localStorage.getItem('token'))
-    setTotal(cant * item.price)
+    setTotal(item.isOffer ? cant * item.offerPrice : cant * item.price)
 
     const itemPedido = {
       ...item,
@@ -49,7 +47,6 @@ const BuyModal = ({ modalAction, item }) => {
         pedido.productos.push(itemPedido)
         let totalPedido = 0;
         pedido.productos.forEach((prod) => (
-          console.log(prod),
           totalPedido = totalPedido + prod.totalProducto
         ))
         pedido.total = totalPedido
@@ -63,7 +60,8 @@ const BuyModal = ({ modalAction, item }) => {
 
 
   return (
-    <section className='fixed z-40 top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-black/50'>
+    <section className='fixed z-40 top-0 bottom-0 left-0 right-0 flex justify-center items-center'>
+      <div onClick={modalAction} className='fixed z-40 top-0 bottom-0 left-0 right-0  bg-black/50'></div>
       <article className=' bg-white min-h-4/6 w-11/12 max-w-[30rem] rounded-md relative shadow py-3 px-4 z-50 flex flex-col items-center justify-between'>
         <div className='w-full flex flex-col items-center'>
           <div className='flex text-xl  font-semibold mb-2'>
@@ -73,7 +71,10 @@ const BuyModal = ({ modalAction, item }) => {
           <img src={item.productImage} alt={item.name} className='w-10/12 max-h-[13rem] object-cover rounded-md mb-4' />
           <div className='flex justify-between items-center'>
             <p className='w-9/12 '>{item.description}</p>
-            <p className='w-2/12 font-bold text-xl text-end'>${item.price}</p>
+            <div className={`${item.isOffer ? 'bg-yellow-300' : ''} h-12 w-3/12 flex flex-col p-2  justify-center font-bold text-xl text-end`}>
+           {item.isOffer && <p className='text-xs me-auto font-semibold'>Oferta!</p>}   
+              <p className='mx-auto' >${item.isOffer ? item.offerPrice : item.price}</p>
+            </div>
           </div>
         </div>
         <div className='w-full'>

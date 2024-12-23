@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 const MostWanted = () => {
   const foods = [
-    { id: "1", name: "Hamburguesas", img: Burg, link: "/sandwiches" },
+    { id: "1", name: "Hamburguesas", img: Burg, link: "/sandwichs" },
     { id: "2", name: "Pizzas", img: Pizz, link: "/pizzas" },
     { id: "3", name: "Pastas", img: Pasta, link: "/pastas" },
   ]

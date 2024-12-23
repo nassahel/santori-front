@@ -4,40 +4,37 @@ import { getLoggedUserData } from "../services/auth.service";
 const AppContext = createContext();
 
 const ContextProvider = ({ children }) => {
-  const [globalData, setGlobalData] = useState({
-    loggedUser: null,
-    order: null,
-  });
-  const [search, setSearch] = useState('')
-  const [numPedidos, setNumPedidos] = useState(0)
+  const [userData, setUserData] = useState(null);
+  const [search, setSearch] = useState('');
+  const [numPedidos, setNumPedidos] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+
+  console.log(userData);
+  
 
   useEffect(() => {
     getLoggedUserData()
       .then((data) => {
-        setGlobalData((prevData) => {
-          const newData = {
-            ...prevData,
-            loggedUser: data,
-          };
-          return newData; // Retorna el nuevo estado
-        });
+        setUserData(data);
       })
       .catch((error) => {
         console.error('Error al obtener datos de usuario', error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-  }, []); // Solo se ejecuta una vez cuando el componente se monta
-
-  useEffect(() => {
-  }, [globalData]); // Este useEffect se ejecutará cada vez que se actualicen los datos en globalData
+  }, []);
 
   return (
     <AppContext.Provider value={{
-      globalData,
-      setGlobalData,
+      userData,
+      setUserData,
       search,
       setSearch,
       numPedidos,
-      setNumPedidos
+      setNumPedidos,
+      loading,
     }}>
       {children}
     </AppContext.Provider>
