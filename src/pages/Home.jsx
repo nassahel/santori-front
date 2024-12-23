@@ -45,7 +45,7 @@ const Home = () => {
     <div className='relative px-2'>
       {modal && <BuyModal modalAction={openCloseModal} item={selectedProd} />}
       {
-        alertModal && <div className='border-2 border-red-400 lg:w-9/12 mx-auto text-sm mt-4 p-3 rounded-md text-center bg-red-100 relative'>
+        alertModal && <div className='border-2 border-red-400 lg:w-9/12 mx-auto text-sm lg:text-base mt-4 p-3 rounded-md text-center bg-red-100 relative'>
           <button onClick={() => setAlertModal(false)} className='absolute top-0 right-2 text-lg'>x</button>
           <span className='text-red-600 font-bold me-2'>Atención!</span> La primera carga de esta pagina puede demorar. Al ser un proyecto de muestra está alojado en servidores gratuitos que poseen demora en la carga.
         </div>
