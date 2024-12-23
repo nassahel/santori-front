@@ -29,15 +29,15 @@ const MisPedidos = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-      console.log('Response:', response);
+      // console.log('Response:', response);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
       setOrders(sortData(data));
     } catch (error) {
-      console.error('Fetch error:', error);
-      Swal.fire('no se pudo obtener los pedidos!', error.message, 'alert');
+      // console.error('Fetch error:', error);
+      // Swal.fire('no se pudo obtener los pedidos!', error.message, 'alert');
     }
   };
 
